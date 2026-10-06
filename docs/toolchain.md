@@ -2,19 +2,19 @@
 
 Lookup date 6 October 2026. Official npm and PyPI registries supplied selected versions and dependency metadata. Runtime consumers have no npm dependencies.
 
-| Tool              | Registry latest observed    | Selected | Reason                                                             |
-| ----------------- | --------------------------- | -------- | ------------------------------------------------------------------ |
-| Node              | Supported runtime selection | 24.21.0  | Existing reviewed Node 24 toolchain and native Web Crypto          |
-| npm               | 12.2.0                      | 12.2.0   | Version available with the reviewed local toolchain                |
-| TypeScript        | 7.0.2                       | 6.0.3    | typescript-eslint 8.71.1 requires TypeScript below 6.1.0           |
-| typescript-eslint | 8.71.1                      | 8.71.1   | Latest compatible strict typed rules                               |
-| ESLint            | 10.12.0                     | 10.12.0  | Compatible with the adapter and Node 24                            |
-| @eslint/js        | 10.0.1                      | 10.0.1   | Official ESLint preset                                             |
-| @types/node       | 24.19.1 in Node 24 line     | 24.19.1  | Runtime-matching declarations                                      |
-| Prettier          | 3.9.9                       | 3.9.9    | Source and prose formatter                                         |
-| Python            | Supplied supported runtime  | 3.12.14  | Local reproducibility runtime, Unicode database recorded by Python |
-| mypy              | 2.4.0                       | 2.4.0    | Strict Python checks, Python >=3.10                                |
-| Ruff              | 0.16.10                     | 0.16.10  | Python lint and formatting                                         |
+| Tool              | Registry latest observed     | Selected | Reason                                                             |
+| ----------------- | ---------------------------- | -------- | ------------------------------------------------------------------ |
+| Node              | Supported runtime selection  | 24.21.0  | Existing reviewed Node 24 toolchain and native Web Crypto          |
+| npm               | 12.2.0                       | 12.2.0   | Version available with the reviewed local toolchain                |
+| TypeScript        | 7.0.2                        | 6.0.3    | typescript-eslint 8.71.1 requires TypeScript below 6.1.0           |
+| typescript-eslint | 8.71.1                       | 8.71.1   | Latest compatible strict typed rules                               |
+| ESLint            | 10.12.0                      | 10.12.0  | Compatible with the adapter and Node 24                            |
+| @eslint/js        | 10.0.1                       | 10.0.1   | Official ESLint preset                                             |
+| @types/node       | 26.6.4, Node 24 line 24.19.1 | 24.19.1  | Runtime-matching declarations                                      |
+| Prettier          | 3.9.9                        | 3.9.9    | Source and prose formatter                                         |
+| Python            | Supplied supported runtime   | 3.12.14  | Local reproducibility runtime, Unicode database recorded by Python |
+| mypy              | 2.4.0                        | 2.4.0    | Strict Python checks, Python >=3.10                                |
+| Ruff              | 0.16.10                      | 0.16.10  | Python lint and formatting                                         |
 
 Python development tools and their transitive versions have release-file SHA-256 constraints in requirements-dev.txt. The [registry record](python-toolchain.json) includes their source endpoints. The data pipeline does not import these tools. Dynamic JSON data is checked through pinned hashes and explicit runtime assertions, independently of static function contracts.
 
@@ -23,3 +23,7 @@ CI actions use reviewed full commit SHAs. Linux CI uses Python 3.12.14, matching
 From v0.2.5, runner labels are ubuntu-24.04 and windows-2025-vs2026, replacing mutable latest OS aliases. These OS labels still receive provider image updates. CI retains actual image/version and toolchain records, and releases additionally publish and attest them, bound to their exact source and four matching distribution files. See [environment evidence and its limits](release-security.md). Neither label pinning nor recorded version strings proves hermetic rebuildability years later.
 
 One Dependabot configuration opens review proposals for npm, pip and GitHub Actions updates. No automatic merge is configured. Updates must keep list bytes stable unless a new data revision is deliberately reviewed.
+
+The 6 October 2026 review of [PR #1](https://github.com/VINASIG/vietnamese-passphrase/pull/1) retained @types/node 24.19.1. The [official npm registry](https://registry.npmjs.org/@types%2fnode) lists 26.6.4 as latest and 24.19.1 as the latest stable version in the Node 24 line. [Definitely Typed aligns declaration major and minor versions with the described library](https://github.com/DefinitelyTyped/DefinitelyTyped#how-do-definitely-typed-package-versions-relate-to-versions-of-the-corresponding-library). Node 26 declarations can allow APIs outside the reviewed Node 24 runtime contract. Passing tests of existing calls would not establish that the complete Node 26 declarations match Node 24. This is a runtime alignment decision, not a finding that 26.6.4 breaks the current generator.
+
+Dependabot ignores only major version updates for @types/node, using the [documented update-types rule](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#update-types-ignore). Minor and patch proposals remain enabled. A Node runtime major upgrade must review the matching declarations, runtime support, CI and this rule together. Security findings still require a reviewed compatible fix or a coordinated runtime migration. This rule does not disable updates for other dependencies.
