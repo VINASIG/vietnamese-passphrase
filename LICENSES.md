@@ -1,0 +1,28 @@
+# License scopes
+
+Copyright 2026 VINASIG for original project material. Third-party authors retain their rights. The request to develop an open-source project and VINASIG's approved purpose-based defaults authorize the grants for original project work. Repository administration does not establish rights to upstream content.
+
+| Paths or material                                                                                | Grant                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/`, `scripts/`, `tests/` executable code, `examples/`, configuration and generated `dist/`   | LGPL-3.0-or-later                                                                                                                                            |
+| Original README, Markdown documentation, original research tables and contribution documentation | CC-BY-SA-4.0                                                                                                                                                 |
+| `data/`, data-shaped test vectors and translation pilot                                          | CC-BY-SA-4.0 for adaptations, retaining the source grants and attribution below                                                                              |
+| `docs/third-party/wordfreq-NOTICE.md`                                                            | Unchanged Robyn Speer notice from Apache-2.0-licensed wordfreq. Associated frequency data is CC-BY-SA-4.0                                                    |
+| Tatoeba-derived evidence and contributor credit records                                          | Original CC BY 2.0 France grant retained. SPDX local identifier `LicenseRef-Tatoeba-CC-BY-2.0-FR`. The combined adapted dataset is shared under CC-BY-SA-4.0 |
+| `.vinasig/standards/`, `.agents/skills/`                                                         | Their retained GPL-3.0-or-later, CC-BY-SA-4.0 and separate brand scopes. See their LICENSES.md and local manifest                                            |
+| Full standard license texts in `LICENSE` and `licenses/`                                         | Unmodified license texts under their own publisher terms                                                                                                     |
+| VINASIG name and identity assets                                                                 | Separate BRAND_POLICY.md. No brand artwork is included in this project                                                                                       |
+
+Original software is free software. You may redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, **either version 3 of the License**, or **any later version**. It is distributed without any warranty. See [LICENSE](LICENSE) and the included [GNU GPL version 3 text](licenses/GPL-3.0-or-later.txt), which LGPL version 3 incorporates.
+
+The LGPL selection is a purpose-based exception to the application default. This project supplies a library for broad integration and a local reference CLI. No network service needs the AGPL condition. Preserve LGPL notices, source access and the ability to replace or relink the library where the license requires it. License compatibility depends on the actual form of distribution. The data grant does not automatically relicense a separate application using the lists.
+
+Wiktionary text is available under its CC-BY-SA-4.0 option. Retain links to both source editions and page histories. Kaikki's extractor license does not replace the license of extracted content. wordfreq data is CC-BY-SA-4.0. The original [wordfreq notice](docs/third-party/wordfreq-NOTICE.md) credits Robyn Speer and upstream contributors and is retained without alteration.
+
+Tatoeba evidence is derived from the detailed Vietnamese export. [All contributing public usernames and sentence IDs](data/inputs/tatoeba-credits.json) are retained for the matched corpus evidence. Attribution links identify the original sentence pages and license. No audio is included. These records do not assert that contributors endorse this project.
+
+EFF, Orchard Street, Ho Ngoc Duc / duyet and osem23 / TZUR are separate benchmark references. Their complete lists and software are not redistributed or combined into the production dataset. Benchmark source bytes stay in an ignored local cache. Numerical measurements and citations are published. EFF-derived translation pairs retain EFF CC-BY-4.0 credit and Wiktionary CC-BY-SA-4.0 terms. Ho Ngoc Duc's GPL version 2 source is excluded from production to avoid assuming a missing compatibility grant.
+
+Original executable examples embedded in documentation use LGPL-3.0-or-later, separately from the surrounding CC-BY-SA-4.0 prose. User-selected secrets are outputs and do not inherit these licenses by being processed. Future contributions use the license of their destination scope. No blanket copyright transfer is required.
+
+For redistribution, carry the selected data, corresponding source evidence, NOTICE.md, the applicable full texts and this scope map. The complete source, lockfiles, build instructions and standards manifest are supplied in the repository. Package and dataset integrity checks cover the actual distribution, not only the root LICENSE filename.

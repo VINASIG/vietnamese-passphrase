@@ -1,0 +1,54 @@
+{
+  "lookupDate": "2026-10-06",
+  "packages": [
+    {
+      "name": "mypy",
+      "selected": "2.4.0",
+      "registry": "https://pypi.org/pypi/mypy/2.4.0/json",
+      "license": "MIT",
+      "requiresPython": ">=3.10"
+    },
+    {
+      "name": "ruff",
+      "selected": "0.16.10",
+      "registry": "https://pypi.org/pypi/ruff/0.16.10/json",
+      "license": "MIT",
+      "requiresPython": ">=3.7"
+    },
+    {
+      "name": "typing_extensions",
+      "selected": "4.16.0",
+      "registry": "https://pypi.org/pypi/typing_extensions/4.16.0/json",
+      "license": "PSF-2.0",
+      "requiresPython": ">=3.9"
+    },
+    {
+      "name": "mypy_extensions",
+      "selected": "1.1.0",
+      "registry": "https://pypi.org/pypi/mypy_extensions/1.1.0/json",
+      "license": null,
+      "requiresPython": ">=3.8"
+    },
+    {
+      "name": "pathspec",
+      "selected": "1.1.1",
+      "registry": "https://pypi.org/pypi/pathspec/1.1.1/json",
+      "license": null,
+      "requiresPython": ">=3.9"
+    },
+    {
+      "name": "librt",
+      "selected": "0.16.0",
+      "registry": "https://pypi.org/pypi/librt/0.16.0/json",
+      "license": "MIT",
+      "requiresPython": ">=3.9"
+    },
+    {
+      "name": "ast-serialize",
+      "selected": "0.12.1",
+      "registry": "https://pypi.org/pypi/ast-serialize/0.12.1/json",
+      "license": "MIT",
+      "requiresPython": ">=3.7"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+node_modules/
+output/
+dist/
+.vinasig/backups/
+*.tgz
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/

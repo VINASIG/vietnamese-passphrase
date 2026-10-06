@@ -1,0 +1,63 @@
+[
+  {
+    "id": "LGPL-3.0-or-later",
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/31ba1a50e5397e00a304dbadc76531740e89ee48/text/LGPL-3.0-or-later.txt",
+    "sourceRef": "31ba1a50e5397e00a304dbadc76531740e89ee48",
+    "size": 42098,
+    "sha256": "996af0513df21f7496288951c41428a03c174e9e4a9d63665c57d670f845ccb1",
+    "files": [
+      "LICENSE",
+      "licenses/LGPL-3.0-or-later.txt"
+    ]
+  },
+  {
+    "id": "GPL-3.0-or-later",
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/31ba1a50e5397e00a304dbadc76531740e89ee48/text/GPL-3.0-or-later.txt",
+    "sourceRef": "31ba1a50e5397e00a304dbadc76531740e89ee48",
+    "size": 34674,
+    "sha256": "fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0",
+    "files": [
+      "licenses/GPL-3.0-or-later.txt"
+    ]
+  },
+  {
+    "id": "CC-BY-SA-4.0",
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/31ba1a50e5397e00a304dbadc76531740e89ee48/text/CC-BY-SA-4.0.txt",
+    "sourceRef": "31ba1a50e5397e00a304dbadc76531740e89ee48",
+    "size": 18375,
+    "sha256": "cde7883b9050a1104f4ac19a1572aafd6e5d7323b68351aaf51fbf4beba54966",
+    "files": [
+      "licenses/CC-BY-SA-4.0.txt"
+    ]
+  },
+  {
+    "id": "Apache-2.0",
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/31ba1a50e5397e00a304dbadc76531740e89ee48/text/Apache-2.0.txt",
+    "sourceRef": "31ba1a50e5397e00a304dbadc76531740e89ee48",
+    "size": 10280,
+    "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+    "files": [
+      "licenses/Apache-2.0.txt"
+    ]
+  },
+  {
+    "id": "LicenseRef-Tatoeba-CC-BY-2.0-FR",
+    "url": "https://creativecommons.org/licenses/by/2.0/fr/legalcode",
+    "sourceRef": null,
+    "size": 39479,
+    "sha256": "597d4c64f6606c64da65ba6c079e5cc87e4cce2b5187eda908c939b538e7ab9b",
+    "files": [
+      "licenses/Tatoeba-CC-BY-2.0-FR.html"
+    ]
+  },
+  {
+    "id": "CC-BY-4.0",
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/31ba1a50e5397e00a304dbadc76531740e89ee48/text/CC-BY-4.0.txt",
+    "sourceRef": "31ba1a50e5397e00a304dbadc76531740e89ee48",
+    "size": 17023,
+    "sha256": "d557539df68e771cc1eedcc91d13f70fca930e508d11eedcafa4b15db49e3744",
+    "files": [
+      "licenses/CC-BY-4.0.txt"
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "status": "repository-created-publication-in-progress",
+  "repository": "VINASIG/vietnamese-passphrase",
+  "description": "Reproducible Vietnamese passphrase wordlists with per-word evidence and uniform reference generation. Research preview.",
+  "homepage": "https://github.com/VINASIG/vietnamese-passphrase#readme",
+  "topics": [
+    "vietnamese",
+    "passphrase",
+    "wordlist",
+    "diceware",
+    "unicode",
+    "cryptography",
+    "reproducible-research",
+    "typescript"
+  ],
+  "release": {
+    "tag": "v0.1.0",
+    "prerelease": true,
+    "title": "Vietnamese Passphrase 0.1.0 research preview",
+    "assets": [
+      "vinasig-vietnamese-passphrase-0.1.0.tgz",
+      "source-snapshot-2026-10-06.1.tar.gz",
+      "SHA256SUMS.txt"
+    ]
+  },
+  "repoDetailsReadbackRequired": true,
+  "relatedUpdates": [
+    "VINASIG/vinasig shared resource and Vietnamese locale entry",
+    "VINASIG/.github English and Vietnamese shared-resource rows"
+  ],
+  "unperformed": [
+    "commit and push",
+    "remote CI",
+    "tag and release",
+    "related public metadata updates"
+  ],
+  "newDomain": null,
+  "npmPublication": false,
+  "visibility": "public",
+  "repoDetailsReadback": {
+    "status": "PASS",
+    "date": "2026-10-06",
+    "url": "https://github.com/VINASIG/vietnamese-passphrase",
+    "method": "GitHub REST GET /repos/VINASIG/vietnamese-passphrase. Description, homepage, topics and public visibility matched."
+  }
+}

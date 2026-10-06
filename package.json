@@ -1,0 +1,68 @@
+{
+  "name": "@vinasig/vietnamese-passphrase",
+  "version": "0.1.0",
+  "description": "Auditable Vietnamese passphrase wordlists and a uniform random reference generator",
+  "type": "module",
+  "license": "LGPL-3.0-or-later",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VINASIG/vietnamese-passphrase.git"
+  },
+  "homepage": "https://github.com/VINASIG/vietnamese-passphrase#readme",
+  "bugs": {
+    "url": "https://github.com/VINASIG/vietnamese-passphrase/issues"
+  },
+  "engines": {
+    "node": ">=24.21.0"
+  },
+  "packageManager": "npm@12.2.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./data/*": "./data/lists/*"
+  },
+  "bin": {
+    "vietphrase": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "data/lists",
+    "data/dice",
+    "data/manifest.json",
+    "data/provenance.jsonl",
+    "data/checksums.json",
+    "docs",
+    "licenses",
+    "NOTICE.md",
+    "LICENSE",
+    "LICENSES.md",
+    "BRAND_POLICY.md",
+    "tsconfig.json",
+    "package-lock.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
+    "lint": "eslint src tests/*.ts --max-warnings 0",
+    "format": "prettier --write src tests/*.ts *.json *.mjs *.md docs .github",
+    "format:check": "prettier --check src tests/*.ts *.json *.mjs *.md docs .github",
+    "test": "node --test --experimental-strip-types tests/*.test.ts",
+    "pretest": "npm run build",
+    "licenses": "node .vinasig/standards/templates/check-licenses.mjs",
+    "audit:dependencies": "npm audit --omit=dev --audit-level=low",
+    "verify": "npm run check && npm run lint && npm run format:check && npm run build && npm test && npm run licenses && node dist/cli.js verify",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.1",
+    "eslint": "10.12.0",
+    "prettier": "3.9.9",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1"
+  }
+}

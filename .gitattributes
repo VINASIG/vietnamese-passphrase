@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.gz binary
+*.bz2 binary
+*.png binary
+.vinasig/** -text
+.agents/** -text
+data/** -text
+licenses/** -text
+LICENSE -text
+BRAND_POLICY.md -text
+docs/third-party/** -text
+# Preserve publisher whitespace in these hash-pinned original texts.
+.vinasig/standards/LICENSES/CC-BY-SA-4.0.txt whitespace=-blank-at-eof
+docs/third-party/wordfreq-NOTICE.md whitespace=-blank-at-eof,-blank-at-eol

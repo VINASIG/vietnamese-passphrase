@@ -1,0 +1,11 @@
+data/
+output/
+node_modules/
+dist/
+.vinasig/
+.agents/
+docs/research/*.json
+docs/third-party/
+docs/license-text-sources.json
+licenses/
+AGENTS.md

@@ -1,0 +1,204 @@
+{
+  "retrievedAt": "2026-10-06T07:00:15.308Z",
+  "sources": [
+    {
+      "file": "wiktionary-en-vi.jsonl",
+      "url": "https://kaikki.org/dictionary/Vietnamese/kaikki.org-dictionary-Vietnamese.jsonl",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Wiktionary contributors, Kaikki.org / Tatu Ylonen",
+      "revision": "2026-09-02 dump, 2026-10-03 extraction",
+      "bytes": 82772100,
+      "sha256": "ba64fae8301bf3f383a82bb178f2370309d31b3bcb3a92e9b0c9e04aeb6ecc16"
+    },
+    {
+      "file": "wiktionary-vi.jsonl.gz",
+      "url": "https://kaikki.org/dictionary/downloads/vi/vi-extract.jsonl.gz",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Vietnamese Wiktionary contributors, Kaikki.org / Tatu Ylonen",
+      "revision": "raw vi edition linked on Kaikki.org",
+      "bytes": 33773177,
+      "sha256": "566a1b6b941d5ec792ce5f79f1830250076a5d9d517c1f3d1aa04dd4dc02482d"
+    },
+    {
+      "file": "wordfreq-vi.msgpack.gz",
+      "url": "https://raw.githubusercontent.com/rspeer/wordfreq/912caf64b657478d1dff1138efdc078947d54bb1/wordfreq/data/small_vi.msgpack.gz",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Robyn Speer and credited upstream data contributors",
+      "revision": "912caf64b657478d1dff1138efdc078947d54bb1",
+      "bytes": 39727,
+      "sha256": "bde76e2846f38fc8f4ad5112493d524c0c7f5e5545072b4de773d0a83159f15f"
+    },
+    {
+      "file": "wordfreq-NOTICE.md",
+      "url": "https://raw.githubusercontent.com/rspeer/wordfreq/912caf64b657478d1dff1138efdc078947d54bb1/NOTICE.md",
+      "license": "Apache-2.0",
+      "attribution": "Robyn Speer",
+      "revision": "912caf64b657478d1dff1138efdc078947d54bb1",
+      "bytes": 2891,
+      "sha256": "d9b104dafe63886af55e7cea7484824e32e12d4e1f57f319923dd643b36d6b15"
+    },
+    {
+      "file": "wordfreq-README.md",
+      "url": "https://raw.githubusercontent.com/rspeer/wordfreq/912caf64b657478d1dff1138efdc078947d54bb1/README.md",
+      "license": "Apache-2.0",
+      "attribution": "Robyn Speer",
+      "revision": "912caf64b657478d1dff1138efdc078947d54bb1",
+      "bytes": 27642,
+      "sha256": "0f1db058e1df2e6bda2db5d0ea851a7111d2390ec16a9939d971ef53ea24f684"
+    },
+    {
+      "file": "wordfreq-source.py",
+      "url": "https://raw.githubusercontent.com/rspeer/wordfreq/912caf64b657478d1dff1138efdc078947d54bb1/wordfreq/__init__.py",
+      "license": "Apache-2.0",
+      "attribution": "Robyn Speer",
+      "revision": "912caf64b657478d1dff1138efdc078947d54bb1",
+      "bytes": 14794,
+      "sha256": "a50df96622a21a7bcab6a8fc8a8ce7abff8cb47e5dcf532341215640c337c1d0"
+    },
+    {
+      "file": "duyet-LICENSE",
+      "url": "https://raw.githubusercontent.com/duyet/vietnamese-wordlist/688b0953c8cdb21ee090ce80b83cefdb052fe2cd/LICENSE",
+      "license": "GPL-2.0-only",
+      "attribution": "Ho Ngoc Duc, duyet",
+      "revision": "688b0953c8cdb21ee090ce80b83cefdb052fe2cd",
+      "bytes": 18047,
+      "sha256": "c03cea027b4b40e4402fabd08557736727ec3d5bc54ad64ab6472de432198cad"
+    },
+    {
+      "file": "duyet-README.md",
+      "url": "https://raw.githubusercontent.com/duyet/vietnamese-wordlist/688b0953c8cdb21ee090ce80b83cefdb052fe2cd/README.md",
+      "license": "GPL-2.0-only",
+      "attribution": "Ho Ngoc Duc, duyet",
+      "revision": "688b0953c8cdb21ee090ce80b83cefdb052fe2cd",
+      "bytes": 850,
+      "sha256": "b44ae9399d55850dd5795bc25eed589a70b8e452825c9e1331f118e00a688b0f"
+    },
+    {
+      "file": "duyet-11K.txt",
+      "url": "https://raw.githubusercontent.com/duyet/vietnamese-wordlist/688b0953c8cdb21ee090ce80b83cefdb052fe2cd/Viet11K.txt",
+      "license": "GPL-2.0-only",
+      "attribution": "Ho Ngoc Duc, duyet",
+      "revision": "688b0953c8cdb21ee090ce80b83cefdb052fe2cd",
+      "bytes": 114755,
+      "sha256": "401752a95c8c97638ecf4df8445ded60d9db87a8f1bbca2e7fc3b6d00eb1132e"
+    },
+    {
+      "file": "duyet-22K.txt",
+      "url": "https://raw.githubusercontent.com/duyet/vietnamese-wordlist/688b0953c8cdb21ee090ce80b83cefdb052fe2cd/Viet22K.txt",
+      "license": "GPL-2.0-only",
+      "attribution": "Ho Ngoc Duc, duyet",
+      "revision": "688b0953c8cdb21ee090ce80b83cefdb052fe2cd",
+      "bytes": 245079,
+      "sha256": "fdb37a1f21cb44898894390fb87d137830ed1507316c2729bad2d804db81033d"
+    },
+    {
+      "file": "duyet-39K.txt",
+      "url": "https://raw.githubusercontent.com/duyet/vietnamese-wordlist/688b0953c8cdb21ee090ce80b83cefdb052fe2cd/Viet39K.txt",
+      "license": "GPL-2.0-only",
+      "attribution": "Ho Ngoc Duc, duyet",
+      "revision": "688b0953c8cdb21ee090ce80b83cefdb052fe2cd",
+      "bytes": 441714,
+      "sha256": "5c139a85964bf8980c6659418007e2ba5e3e5cc0098fe16c08f1bf5a6dd91ec5"
+    },
+    {
+      "file": "duyet-74K.txt",
+      "url": "https://raw.githubusercontent.com/duyet/vietnamese-wordlist/688b0953c8cdb21ee090ce80b83cefdb052fe2cd/Viet74K.txt",
+      "license": "GPL-2.0-only",
+      "attribution": "Ho Ngoc Duc, duyet",
+      "revision": "688b0953c8cdb21ee090ce80b83cefdb052fe2cd",
+      "bytes": 988627,
+      "sha256": "b83d49308336f12ca46d06287d8db6e2cdc7a725d9a9dac56930051775fafb90"
+    },
+    {
+      "file": "eff-large.txt",
+      "url": "https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt",
+      "license": "CC-BY-4.0",
+      "attribution": "Electronic Frontier Foundation / Joseph Bonneau",
+      "revision": "2016",
+      "bytes": 108800,
+      "sha256": "addd35536511597a02fa0a9ff1e5284677b8883b83e986e43f15a3db996b903e"
+    },
+    {
+      "file": "eff-short.txt",
+      "url": "https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt",
+      "license": "CC-BY-4.0",
+      "attribution": "Electronic Frontier Foundation / Joseph Bonneau",
+      "revision": "2016",
+      "bytes": 13660,
+      "sha256": "8f5ca830b8bffb6fe39c9736c024a00a6a6411adb3f83a9be8bfeeb6e067ae69"
+    },
+    {
+      "file": "eff-short2.txt",
+      "url": "https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt",
+      "license": "CC-BY-4.0",
+      "attribution": "Electronic Frontier Foundation / Joseph Bonneau",
+      "revision": "2016",
+      "bytes": 17258,
+      "sha256": "22b45c52e0bd0bbf03aa522240b111eb4c7c0c1d86c4e518e1be2a7eb2a625e4"
+    },
+    {
+      "file": "orchard-medium.txt",
+      "url": "https://raw.githubusercontent.com/sts10/orchard-street-wordlists/4fd015fe9a8e50d837d9f54cb39883bb801da1ed/lists/orchard-street-medium.txt",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Sam Schlinkert / sts10",
+      "revision": "4fd015fe9a8e50d837d9f54cb39883bb801da1ed",
+      "bytes": 66099,
+      "sha256": "c50d42781d5ac20eeed37f271df5a0fd3573de493812f319cd71dd4da9a8a38e"
+    },
+    {
+      "file": "orchard-long.txt",
+      "url": "https://raw.githubusercontent.com/sts10/orchard-street-wordlists/4fd015fe9a8e50d837d9f54cb39883bb801da1ed/lists/orchard-street-long.txt",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Sam Schlinkert / sts10",
+      "revision": "4fd015fe9a8e50d837d9f54cb39883bb801da1ed",
+      "bytes": 157804,
+      "sha256": "21b00942246dc7f0ecf5321dc22bc4ce2326b51ea72ea55697d754601ca115d2"
+    },
+    {
+      "file": "orchard-README.md",
+      "url": "https://raw.githubusercontent.com/sts10/orchard-street-wordlists/4fd015fe9a8e50d837d9f54cb39883bb801da1ed/readme.markdown",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Sam Schlinkert / sts10",
+      "revision": "4fd015fe9a8e50d837d9f54cb39883bb801da1ed",
+      "bytes": 8395,
+      "sha256": "073816efab99d0ef2a56ec2d916dceb62ad9adb2b163887a70c6cf37fb1153a1"
+    },
+    {
+      "file": "tatoeba-vie-detailed.tsv.bz2",
+      "url": "https://downloads.tatoeba.org/exports/per_language/vie/vie_sentences_detailed.tsv.bz2",
+      "license": "LicenseRef-Tatoeba-CC-BY-2.0-FR",
+      "attribution": "Tatoeba contributors named in detailed export",
+      "revision": "weekly export 2026-10-03",
+      "bytes": 638963,
+      "sha256": "540c3bef0fcf0b6e3fdcfcf04f624a9b044bd55783cb0a7786596aff1e243559",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/legalcode"
+    },
+    {
+      "file": "bip39-vietnamese.txt",
+      "url": "https://raw.githubusercontent.com/osem23/bip39-wordlists-tzur/d4b354e49aaba8311261172ca3fdc582d6232a8a/wordlists/tzur-original/vietnamese.txt",
+      "license": "MIT",
+      "attribution": "osem23 / Tzur",
+      "revision": "d4b354e49aaba8311261172ca3fdc582d6232a8a",
+      "bytes": 20130,
+      "sha256": "40340269691e02649aa604453cb7ec6b45fd3780c410cf2617e34744d72597e9"
+    },
+    {
+      "file": "bip39-README.md",
+      "url": "https://raw.githubusercontent.com/osem23/bip39-wordlists-tzur/d4b354e49aaba8311261172ca3fdc582d6232a8a/README.md",
+      "license": "MIT",
+      "attribution": "osem23 / Tzur",
+      "revision": "d4b354e49aaba8311261172ca3fdc582d6232a8a",
+      "bytes": 26598,
+      "sha256": "fa60e813e9836a4db58a0dac9705aa74d7b5a213502668ed632a6cfa511eae4c"
+    },
+    {
+      "file": "bip39-LICENSE",
+      "url": "https://raw.githubusercontent.com/osem23/bip39-wordlists-tzur/d4b354e49aaba8311261172ca3fdc582d6232a8a/LICENSE",
+      "license": "MIT",
+      "attribution": "osem23 / Tzur",
+      "revision": "d4b354e49aaba8311261172ca3fdc582d6232a8a",
+      "bytes": 1071,
+      "sha256": "b6700ff452fb9e0d4c64e3678b104c95fe5faedb4f7dd44f03a67c8e24354877"
+    }
+  ]
+}

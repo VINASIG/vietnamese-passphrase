@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "version": "0.1.0",
+  "source": {
+    "repository": "VINASIG/agent-standards",
+    "ref": "sha256:c41978c35b60450d8efebc66c7d022dc6ae4b60997f35cc763e4f865206ce7e8",
+    "kind": "local-content-snapshot"
+  },
+  "files": {
+    ".vinasig/standards/BRAND_POLICY.md": "ec06977f2015ccf269b94865e000d981b967c1b7b1787bf0b0f739dc75632a5e",
+    ".vinasig/standards/LICENSE": "fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0",
+    ".vinasig/standards/LICENSES.md": "1871d39d2c3d481be77a24523742a12021844811f88aeadef6e26a793057d166",
+    ".vinasig/standards/LICENSES/CC-BY-SA-4.0.txt": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+    ".vinasig/standards/docs/audits/licensing-2026-10-04.md": "13d1720e6c20e17dae89f4e24421d3edfe2c254bc84a058610ffa374ad3b8e35",
+    ".vinasig/standards/docs/license-text-sources.json": "c680c6ac2db2a80cf9bbaaa4760e604495f936caa52cb2d1f3923ccbfcda450c",
+    ".vinasig/standards/docs/sources.md": "0c527687d7b3cfaa01c1b7b154f9e2e4054a20a803fea95f19f9bef7b80f4ee5",
+    ".vinasig/standards/docs/tool-registry.md": "aaeef5d28b6387cf5d31d9ed05376e089e58f15904f395db7a561e8d3dc14094",
+    ".vinasig/standards/policies/core.md": "62a3d13617f790be196d0fa6d46c4c0dc1ab8ec2d366c92debae4b0c2433f302",
+    ".vinasig/standards/policies/language.md": "ed5092fc303f50a92c9f3ab42911c248c7990f0cacea97dace31ae0500790ce1",
+    ".vinasig/standards/policies/licensing.md": "745ab26707b72ba8b367d8b7fb972461da8fda3729b8aeffdfa3971fb008b376",
+    ".vinasig/standards/policies/quality.md": "195f59dd6429e2ed4edaa25ec3e540bab403c00582e094d0ec05f99d2ceda4a3",
+    ".vinasig/standards/profiles/core.md": "443526edd19e31a0a674863d67dead6a70c1ea6a7e26d209cf14b110a92a62da",
+    ".vinasig/standards/schemas/bundle.schema.json": "00040b346772fc6b9c10c4cc386e7171e145e4f48ede389aaa649961fd9cac87",
+    ".vinasig/standards/schemas/cli-result.schema.json": "9faadd18a1c2d5452eb11907dbfa46e69635ca4bd6ac890cf88da099d8b98205",
+    ".vinasig/standards/schemas/eval.schema.json": "602ef5f15a22935242cbe836045d2557b2c959e31d58a79d5c69bbfd8ed99024",
+    ".vinasig/standards/schemas/manifest.schema.json": "b38d5219aea7ef1bc38cb570be9c63d6fd3148a4acbdde6a2be2c71f541e37ae",
+    ".vinasig/standards/schemas/report.schema.json": "55fa4791b4435b27038ca95a30ff333b1ddf7391adda4fdd67285a1b328dde54",
+    ".vinasig/standards/schemas/standards.schema.json": "71b5f063ac0f4f69737d75af3fc2c894c40f756d13e328b2d400c95f1c062dbc",
+    ".agents/skills/vinasig-dependencies/SKILL.md": "ff26084bea30cb21c29814407c2c2a62adb44a7c768b1c272a81fb3c19b4af08",
+    ".agents/skills/vinasig-workflow/SKILL.md": "0d4c2948e5030ea44c401d64e34e8feecceb021193590854d05ba3c18bff1d25",
+    ".vinasig/standards/standards.json": "925822413768b92a336569e8ebb1c20c4bae2341f065848c3b1a64be01bbf7f1",
+    ".vinasig/standards/templates/check-licenses.mjs": "cba3b918bbb6a4d3ea33534cfd1ba53fc12348f464e1697169cb47175ec131c6",
+    ".vinasig/standards/templates/exception.json": "ecf34e10bd0c1be5ae82b3aa1db732b5d4dfd50f328249e18c5ae2ff901f1bff",
+    ".vinasig/standards/templates/license-review.md": "aa15676196c2fe1159cf078daa1fe7d50716f27628f2256d1041af56a39d7ea1",
+    ".vinasig/standards/templates/project-publication.md": "12c6c10c6c67ec9aa9146f11b5cc8c8163d41166de9ebe55e5fdcb208c7187e4",
+    ".vinasig/standards/templates/report.json": "73e785fd7022b452d6b751d1b2a33b6e6ff680ef588388888081fb278304d70a",
+    ".vinasig/standards/tools.lock.json": "ed5f942785191c59f833dcd242844b86e7f2ec6c908b146ff0eb01f08b575433"
+  },
+  "profile": "core",
+  "bundleSha256": "b559621eb453eee3e2728901d1dd9bd0dd89d0451e6243ce40182e1c9bdb31d7",
+  "agentBlock": "370d7ec77776d6fe645e0ea602e367261d1b7183f4b1d057414e80ce6dea92b7",
+  "agentsCreated": true
+}

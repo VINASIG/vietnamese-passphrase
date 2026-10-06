@@ -1,0 +1,15 @@
+# Attribution and source notice
+
+Vietnamese Passphrase is developed by VINASIG with SI agents. SI means Super Intelligence in VINASIG's terminology. This statement does not substitute for independent review.
+
+The data is an adaptation of the following evidence, filtered and encoded by the project. SHA-256, retrieved revisions and URLs appear in [data/source-lock.json](data/source-lock.json).
+
+- [English Wiktionary Vietnamese entries](https://en.wiktionary.org/wiki/Category:Vietnamese_lemmas), written by Wiktionary contributors. The CC-BY-SA-4.0 option is used. Individual headword pages and their histories identify contributors.
+- [Vietnamese Wiktionary](https://vi.wiktionary.org/), written by Vietnamese Wiktionary contributors, under CC-BY-SA-4.0. Both editions overlap and are not independent corpora.
+- [Kaikki.org](https://kaikki.org/) and Tatu Ylonen supply machine-readable Wiktionary extraction. The extracted content keeps its source rights. For a selected `word`, visit `https://en.wiktionary.org/wiki/` or `https://vi.wiktionary.org/wiki/` followed by its URL-encoded original spelling. Spaces become underscores in Wikimedia URLs.
+- [wordfreq](https://github.com/rspeer/wordfreq), copyright 2022 Robyn Speer. Its Vietnamese frequency data is CC-BY-SA-4.0. See the [unchanged upstream notice](docs/third-party/wordfreq-NOTICE.md) for Google Books, the University of Leeds, Wikipedia, ParaCrawl, OpenSubtitles and Marc Brysbaert et al. / SUBTLEX credits. SUBTLEX remains freely available. These credits cover the upstream project's combined source notice and do not claim every upstream corpus contributed to every Vietnamese token.
+- [Tatoeba contributors](https://tatoeba.org/), under [CC BY 2.0 France](https://creativecommons.org/licenses/by/2.0/fr/). Contributor usernames and matched sentence IDs are retained in [data/inputs/tatoeba-credits.json](data/inputs/tatoeba-credits.json). Visit `https://tatoeba.org/en/sentences/show/` followed by an ID to inspect a cited sentence. Original evidence is transformed into counts and IDs. Full sentences and audio are not redistributed here.
+
+Comparison references are [EFF / Joseph Bonneau](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases), [Orchard Street / Sam Schlinkert](https://github.com/sts10/orchard-street-wordlists), [Ho Ngoc Duc / duyet](https://github.com/duyet/vietnamese-wordlist), and [osem23 / TZUR](https://github.com/osem23/bip39-wordlists-tzur). The EFF exact-gloss translation pilot is an adaptation combining EFF [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) data and Wiktionary CC-BY-SA-4.0 evidence. It is a partial experiment, not the production wordlist.
+
+The project changed source selection, label filtering, normalization, spelling-variant handling, word boundaries and ASCII collision handling. It did not translate an English list into the production vocabulary. The authors of source material do not endorse the project. Preserve this notice when redistributing data.

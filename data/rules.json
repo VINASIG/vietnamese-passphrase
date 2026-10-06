@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "version": "2026-10-06.1",
+  "requiredEditions": ["en", "vi"],
+  "partsOfSpeech": ["noun", "verb", "adj"],
+  "excludedTags": ["abbreviation", "acronym", "initialism", "obsolete", "archaic", "rare", "dated", "vulgar", "offensive", "derogatory", "slur", "slang", "nonstandard", "misspelling", "dialectal", "regional", "literary", "poetic", "historical", "uncommon", "pronunciation-spelling", "misconstruction", "tục", "từ tục", "cổ", "ít dùng", "lỗi chính tả", "phương ngữ", "văn chương"],
+  "maxSyllables": 2,
+  "minimumSyllableZipfCentibels": 400,
+  "minimumDistinctCorpusSentences": 3,
+  "requireStandaloneSense": true,
+  "orthography": "Preserve vowel shape and tone identity. Merge different placements of the same tone within a syllable. Prefer greater exact corpus coverage, then greater minimum syllable frequency, then codepoint order.",
+  "status": "research-preview"
+}
