@@ -61,4 +61,4 @@ TypeScript is checked with strict mode, unchecked-index protection and exact opt
 
 `npm pack` produces a local integration archive after building. It includes unminified ES modules, declarations, original TypeScript, wordlists, dice tables, selected provenance, source/data notices and applicable license texts. It does not include upstream caches, development tools or generated secrets. Full evidence and the ledger remain available in the source repository. The package is private to prevent accidental npm publication before a reviewed package release.
 
-The CI definition runs applicable source and offline data gates on Windows and Linux. A workflow file in a local checkout is not evidence of a remote CI run. Exact run status is recorded at publication.
+The CI definition runs the same source and offline data gates on Linux with Python 3.12.14 and Windows with Python 3.14.8. Both versions are pinned and must reproduce the same published bytes. A workflow file in a local checkout is not evidence of a remote CI run. Exact run status is recorded at publication.
