@@ -1,7 +1,6 @@
 """Build distributions from committed Git bytes; compare OS rebuilds before publication."""
 
 import argparse
-import gzip
 import hashlib
 import io
 import json
@@ -10,26 +9,20 @@ import pathlib
 import shutil
 import subprocess
 import tarfile
+import zipfile
 from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def archive(path: pathlib.Path, files: dict[str, tuple[bytes, int]]) -> None:
-    with (
-        path.open("wb") as output,
-        gzip.GzipFile(
-            filename="", mode="wb", fileobj=output, mtime=0, compresslevel=0
-        ) as compressed,
-    ):
-        with tarfile.open(fileobj=compressed, mode="w", format=tarfile.USTAR_FORMAT) as tar:
-            for name, (data, mode) in sorted(files.items()):
-                info = tarfile.TarInfo(name)
-                info.size = len(data)
-                info.mode = mode
-                info.mtime = 0
-                info.uid = info.gid = 0
-                tar.addfile(info, io.BytesIO(data))
+    with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_STORED) as output:
+        for name, (data, mode) in sorted(files.items()):
+            info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            info.create_system = 3
+            info.external_attr = (0o100000 | mode) << 16
+            info.compress_type = zipfile.ZIP_STORED
+            output.writestr(info, data)
 
 
 def build(destination: pathlib.Path) -> None:
@@ -92,9 +85,9 @@ def build(destination: pathlib.Path) -> None:
             if file is None:
                 raise ValueError("Missing package content")
             files[member.name] = (file.read(), 0o755 if member.mode & 0o111 else 0o644)
-    package_path = destination / ("vinasig-vietnamese-passphrase-" + version + ".tgz")
+    package_path = destination / ("vinasig-vietnamese-passphrase-" + version + ".zip")
     archive(package_path, files)
-    source_path = destination / ("source-v" + version + ".tar.gz")
+    source_path = destination / ("source-v" + version + ".zip")
     archive(
         source_path,
         {"vietnamese-passphrase-" + version + "/" + name: value for name, value in source.items()},
@@ -107,7 +100,7 @@ def build(destination: pathlib.Path) -> None:
         "sourceCommit": revision,
         "packageVersion": version,
         "sha256": hashes,
-        "archive": "sorted USTAR, zero times and ownership, fixed modes, gzip mtime zero and compression level zero",
+        "archive": "sorted ZIP_STORED, fixed DOS date 1980-01-01, Unix file modes and no extra fields",
         "assurance": "build origin and byte reproducibility; not vocabulary or independent audit approval",
     }
     record_path = destination / "build-record.json"

@@ -4,7 +4,7 @@ Bộ wordlist tiếng Việt có nguồn gốc từng mục, quy trình xây d�
 
 [English](README.md) · [Nghiên cứu và so sánh](docs/research.md) · [Mô hình bảo mật](docs/security.md)
 
-Phiên bản 0.2.2 là **bản nghiên cứu thử nghiệm do SI agents đánh giá**. Theo quy tắc của chủ dự án, công việc và đánh giá do agents thực hiện. Quyết định của agent không thay thế bằng chứng từ người dùng. Kiểm tra cấu trúc và các phép thử chương trình đã được xây dựng. Dự án chưa có thẩm định ngôn ngữ độc lập, nghiên cứu khả năng ghi nhớ với người dùng Việt hay kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39.
+Phiên bản 0.2.3 là **bản nghiên cứu thử nghiệm do SI agents đánh giá**. Theo quy tắc của chủ dự án, công việc và đánh giá do agents thực hiện. Quyết định của agent không thay thế bằng chứng từ người dùng. Kiểm tra cấu trúc và các phép thử chương trình đã được xây dựng. Dự án chưa có thẩm định ngôn ngữ độc lập, nghiên cứu khả năng ghi nhớ với người dùng Việt hay kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39.
 
 [Bản phát hành v0.1.0](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0) có gói tích hợp, các bản chụp nguồn dữ liệu gốc và checksum SHA-256. [Hồ sơ phát hành](docs/publication-plan.json) ghi revision mã nguồn, kết quả kiểm tra file tải lại và thông tin công khai trên các trang liên quan.
 
