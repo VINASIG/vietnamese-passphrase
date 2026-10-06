@@ -6,7 +6,7 @@
 
 The released 3,057-entry size is a heuristic output, not a demonstrated optimum. The two Wiktionary editions overlap; wordfreq estimates and Tatoeba n-gram counts are proxies. Determinism preserves a choice but cannot justify it linguistically. The root problem was a selection pipeline with insufficient comparison of the vocabulary it produced. We now publish structural neighborhoods, external lexical attestation, an explicit agent content policy, attributable variant decisions and competing experimental profiles. Released data remains the baseline.
 
-The [independent audit](../scripts/vocabulary_audit.py) reads list bytes without importing the selection implementation. Deletion signatures generate candidates; codepoint Levenshtein verifies every pair. An exhaustive small-space full-matrix oracle checks distance and neighborhood completeness. [Diagnostic datasets](research/adversarial/) retain full pairs and collision classes, not an overall quality score.
+The [implementation-independent diagnostics](../scripts/vocabulary_audit.py) read list bytes without importing the selection implementation. The diagnostic code was authored within this project, not by an independent third-party reviewer. Deletion signatures generate candidates; codepoint Levenshtein verifies every pair. An exhaustive small-space full-matrix oracle checks distance and neighborhood completeness. [Diagnostic datasets](research/adversarial/) retain full pairs and collision classes, not an overall quality score.
 
 | Baseline   | Entries | Tokens with a distance-one neighbor | Tokens in ASCII collision classes | External native lexical attestation |
 | ---------- | ------: | ----------------------------------: | --------------------------------: | ----------------------------------: |
@@ -57,4 +57,4 @@ The critique is right about presentation: broad `PASS` labels and entropy precis
 
 [Release verification](release-security.md) adds reproducible distribution comparison and keyless build provenance. Hashes need a trusted reference; attestations identify a workflow and source context, not vocabulary quality or trusted maintainer behavior. v0.1.0 is preserved and is not retrospectively described as attested.
 
-Continue as an agent-assessed research and integration project with versioned contextual profiles, independent diagnostics and narrow claims. Do not promote a canonical standard or superiority over hand-curated or translated baselines without the needed evidence. The engineering results reveal tradeoffs and reproducible alternatives; they do not settle human memorability.
+Continue as an agent-assessed research and integration project with versioned contextual profiles, implementation-independent diagnostics and narrow claims. Do not promote a canonical standard or superiority over hand-curated or translated baselines without the needed evidence. The engineering results reveal tradeoffs and reproducible alternatives; they do not settle human memorability.

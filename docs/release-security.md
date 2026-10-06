@@ -4,7 +4,13 @@ The current release identity is in [release.json](../release.json). A future v0.
 
 v0.1.0 used locally built archives and download/hash verification. Its tag and assets are immutable. No historical CI attestation is claimed.
 
-The v0.2 release workflow builds on Linux/Python 3.12.14 and Windows/Python 3.14.8 from the same committed Git bytes. This avoids checkout CRLF changes entering package inputs. Both environments run integrity, generator, independent data, vocabulary-oracle and deterministic research checks. The release builder uses the standard library ZIP_STORED format with sorted entries, a fixed DOS date of 1980-01-01, fixed Unix file modes and no extra fields. No deflate compressor participates in these output archives. This costs larger downloads. Plain wordlists remain separately reusable. Publication fails unless all four distribution files match across environments. Byte equality is observed for the tested environment pair; arbitrary future compressors or toolchain versions are not assumed identical.
+From v0.2.5, CI and release jobs select ubuntu-24.04/Python 3.12.14 and windows-2025-vs2026/Python 3.14.8. These explicit OS labels avoid the automatic latest-label OS migration. [GitHub's announcement](https://github.com/actions/runner-images/issues/14748) schedules ubuntu-latest's migration to Ubuntu 26.04 to begin on 19 October 2026 and finish by 19 November. Explicit OS labels still receive image updates; [runner image documentation](https://github.com/actions/runner-images#image-releases) describes that update cadence. The project does not claim an immutable or hermetically preserved environment.
+
+Both environments build from the same committed Git bytes, avoiding checkout CRLF changes entering package inputs. They run integrity, generator, separately implemented data checks, vocabulary-oracle and deterministic research checks. The release builder uses the standard library ZIP_STORED format with sorted entries, a fixed DOS date of 1980-01-01, fixed Unix file modes and no extra fields. No deflate compressor participates in these output archives. This costs larger downloads. Plain wordlists remain separately reusable. Publication fails unless all four distribution files match across environments. Byte equality is observed for the tested environment pair; arbitrary future compressors or toolchain versions are not assumed identical.
+
+The schema-2 build-record.json names two environment records: environment-ubuntu-24.04.json and environment-windows-2025-vs2026.json. Each record observes the runner's exact ImageOS and ImageVersion, OS release/version, architecture, hosting type, actual Python/Unicode/Node/npm/Git versions and workflow run/ref/attempt. [GitHub's image variables](https://github.com/actions/runner-images/discussions/7661) supply the image identity. Only these selected fields are captured; no full environment dump, credentials or local paths are included. Dependency lock hashes and all four distribution hashes bind each record to the selected commit and package version. Capture in ordinary CI records that CI ref; publication requires both records to identify the same exact-tag run, matching pins and artifact bytes. Missing image observations or mismatches fail before signing.
+
+The four shared distribution files are compared byte for byte. Environment records intentionally differ and are separate evidence assets, not inputs to the deterministic archives. The publish job validates and attests all six files before releasing them. Their observed fields depend on the trusted workflow; the manifests and signatures do not prove that the host was uncompromised. They identify a tested environment and do not contain a restorable VM/container image, complete OS inventory or digest-pinned toolchain binaries. Long-term hermetic reproducibility remains unestablished. This bounded change adds environment evidence without a new container platform or dependencies.
 
 The source archive includes the complete tracked repository, portable baseline evidence and the pinned external snapshot. The integration package includes executable source, scripts, tests, data, experimental profiles and notices. The historical original-source archive remains available with v0.1.0; raw original production inputs are not silently claimed to be in the new portable source archive.
 
@@ -13,16 +19,16 @@ The publisher has OIDC and attestation permissions only after both builds succee
 Download the selected release and verify each asset against the exact repository, workflow, source digest and tag reference you intend to trust. For example, substitute the release's reviewed source commit for SOURCE_COMMIT:
 
 ```sh
-gh release download v0.2.4 --repo VINASIG/vietnamese-passphrase
-gh attestation verify vinasig-vietnamese-passphrase-0.2.4.zip \
+gh release download v0.2.5 --repo VINASIG/vietnamese-passphrase
+gh attestation verify vinasig-vietnamese-passphrase-0.2.5.zip \
   --repo VINASIG/vietnamese-passphrase \
   --signer-workflow VINASIG/vietnamese-passphrase/.github/workflows/release.yml \
   --source-digest SOURCE_COMMIT \
-  --source-ref refs/tags/v0.2.4 \
+  --source-ref refs/tags/v0.2.5 \
   --deny-self-hosted-runners
 ```
 
-Repeat for the source archive, build record and checksum file. Check the attested build record's commit against the chosen source and compare artifact digests. A mutable repository name alone is too broad a trust policy. A checksum and file obtained from the same untrusted channel can both be replaced; a valid signature from an unintended repository or workflow is also insufficient.
+Repeat for the source archive, build record, checksum file and both environment records. Check the attested build record's commit against the chosen source and compare artifact digests. The checksum file covers the two archives and build record; each separately attested environment record contains hashes for all four shared files. Verify the environment signatures before relying on their contents. A mutable repository name alone is too broad a trust policy. A checksum and file obtained from the same untrusted channel can both be replaced; a valid signature from an unintended repository or workflow is also insufficient.
 
 After publication, download and verify actual delivered bytes and signatures. Record the run, exact commit and results separately from this procedure. Preserve negative results rather than bypassing cross-environment comparison.
 

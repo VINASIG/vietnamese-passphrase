@@ -1,14 +1,14 @@
 # Vietnamese Passphrase
 
-Experimental Vietnamese passphrase vocabularies with attributable SI-agent decisions, independent diagnostics and a uniform reference generator. Reuse the UTF-8 lists and evidence, or integrate the dependency-free TypeScript library.
+Experimental Vietnamese passphrase vocabularies with attributable SI-agent decisions, implementation-independent diagnostics and a uniform reference generator. Reuse the UTF-8 lists and evidence, or integrate the dependency-free TypeScript library.
 
 [Đọc bằng tiếng Việt](README.vi.md) · [Research and comparisons](docs/research.md) · [Security model](docs/security.md) · [Data specification](docs/specification.md)
 
 ## Current research preview
 
-**[v0.2.4](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.4)** is the current agent-assessed research preview. [Release identity](release.json) pins the exact notes and preview channel. There is no stable release and no recommended universal profile. GitHub's stable latest-release endpoint does not select prereleases, so use this explicit version rather than a latest URL.
+**[v0.2.5](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.5)** is the current agent-assessed research preview. [Release identity](release.json) pins the exact notes and preview channel. There is no stable release and no recommended universal profile. GitHub's stable latest-release endpoint does not select prereleases, so use this explicit version rather than a latest URL.
 
-[Delivered artifact evidence](docs/publication-v0.2.4.json) records the exact source, matching release notes, downloaded bytes, build-origin attestations and current public entrypoint checks. [Verification observations](docs/verification-v0.2.4.md) keep those results separate from vocabulary evidence.
+The prior [v0.2.4 delivery evidence](docs/publication-v0.2.4.json) and [verification observations](docs/verification-v0.2.4.md) retain their exact source, downloaded bytes and attestation scope. v0.2.5 delivery observations are recorded after publication, separately from vocabulary evidence.
 
 The owner requires SI-agent execution and assessment. One agent screened headwords. Human linguistic validation, Vietnamese recall and entry performance, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
 
@@ -29,11 +29,13 @@ Names identify evidence and intended usage. Transformation-only data IDs remain 
 
 The [machine-readable catalog](research/profile-catalog.json) records evidence, purpose and generation policy for all eight profiles. Renaming does not change data bytes or entropy. The generic library accepts caller-supplied vocabularies and does not enforce the CLI policy. Downstream applications must choose and enforce their own evidence and usage requirements.
 
-An internal syllable space is encoded as `_` except in the explicit fused experiment. Preserve the chosen profile's tokens and supported outer separator. Stripping accents after sampling, dropping delimiters, choosing favorite words or reordering output changes the assumptions. Source and filtering decisions determine list sizes, not a quota imposed by Diceware or BIP-39. See [independent diagnostics](docs/research/adversarial/) and [policy decisions](research/content-policy.json).
+An internal syllable space is encoded as `_` except in the explicit fused experiment. Preserve the chosen profile's tokens and supported outer separator. Stripping accents after sampling, dropping delimiters, choosing favorite words or reordering output changes the assumptions. Source and filtering decisions determine list sizes, not a quota imposed by Diceware or BIP-39. See [implementation-independent diagnostics](docs/research/adversarial/) and [policy decisions](research/content-policy.json). The diagnostic code reads list bytes without importing the selection pipeline, but was authored within this project. It is not an independent third-party review.
 
 ## Run locally
 
 Use Node 24.21.0 and npm 12.2.0. The package has no runtime dependencies and is not published to npm. Clone the source and build it.
+
+The Unicode and ASCII commands below are parallel API examples only. Neither profile, their order, nor the illustrative 80-bit target is a recommendation. Choose a profile and target after reviewing its evidence and your application's constraints.
 
 ```sh
 git clone https://github.com/VINASIG/vietnamese-passphrase.git
@@ -43,13 +45,16 @@ npm run build
 node dist/cli.js verify
 node dist/cli.js profiles
 node dist/cli.js info --profile experimental-agent-vi
+node dist/cli.js info --profile experimental-agent-ascii
 node dist/cli.js generate --profile experimental-agent-vi --bits 80
-node dist/cli.js generate --profile experimental-agent-ascii --words 8 --json
+node dist/cli.js generate --profile experimental-agent-ascii --bits 80 --json
 ```
 
 The final two commands print a newly generated secret to standard output. The library does not upload it, persist it or copy it to a clipboard. Terminal history, process capture and your surrounding application are outside that property. Never use the public examples or test vectors as real passwords.
 
 ## Integrate the library
+
+This integration example demonstrates digest verification and explicit planning. Its selected list and bit target are illustrative, with the same evidence limits as the CLI examples.
 
 ```ts
 import { readFile } from "node:fs/promises";
@@ -104,7 +109,7 @@ Python 3.12.14 runs the data pipeline with only the standard library. Portable e
 
 [Reproduction instructions](docs/reproducibility.md) distinguish rebuilding from the included portable evidence, verifying its reduction from original snapshots, and rerunning benchmarks. [Contribution rules](CONTRIBUTING.md) require traceable evidence and scoped agent assessment.
 
-The [release procedure](docs/release-security.md) checks exact-tag notes, independently rebuilt distribution bytes and build-origin attestations. Historical [v0.2.3 delivery evidence](docs/publication-v0.2.json) and [v0.1 originals](docs/historical-baselines.md) retain their original scope. Neither an archive signature nor a renamed profile establishes vocabulary quality.
+The [release procedure](docs/release-security.md) checks exact-tag notes, distribution bytes rebuilt on two recorded environments and build-origin attestations. Historical [v0.2.3 delivery evidence](docs/publication-v0.2.json) and [v0.1 originals](docs/historical-baselines.md) retain their original scope. Neither an archive signature nor a renamed profile establishes vocabulary quality.
 
 ## Licensing
 

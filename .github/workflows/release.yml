@@ -13,9 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             python: "3.12.14"
-          - os: windows-latest
+          - os: windows-2025-vs2026
             python: "3.14.8"
     runs-on: ${{ matrix.os }}
     env:
@@ -51,6 +51,11 @@ jobs:
       - run: python scripts/compare_methodology.py
       - run: git diff --exit-code -- data docs/research research/experimental
       - run: python scripts/package_release.py --out output/release
+      - name: Record actual build environment
+        shell: bash
+        env:
+          BUILD_RUNNER_LABEL: ${{ matrix.os }}
+        run: python scripts/package_release.py --record-environment "output/environment/environment-$BUILD_RUNNER_LABEL.json" --runner-label "$BUILD_RUNNER_LABEL" --assets output/release
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ${{ matrix.os }}
@@ -58,11 +63,12 @@ jobs:
             output/release/*.zip
             output/release/SHA256SUMS.txt
             output/release/build-record.json
+            output/environment/*.json
           if-no-files-found: error
           retention-days: 30
   publish:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       id-token: write
@@ -77,15 +83,18 @@ jobs:
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           path: builds
-      - run: python scripts/package_release.py --compare builds/ubuntu-latest builds/windows-latest
+      - run: python scripts/package_release.py --compare builds/ubuntu-24.04/release builds/windows-2025-vs2026/release
       - name: Validate publication identity and delivered assets
         id: release
         env:
           RELEASE_TAG: ${{ github.ref_name }}
-        run: python scripts/release_metadata.py --tag "$RELEASE_TAG" --assets builds/ubuntu-latest --github-output
+        run: python scripts/release_metadata.py --tag "$RELEASE_TAG" --assets builds/ubuntu-24.04/release --environments builds --github-output
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
-          subject-path: "builds/ubuntu-latest/*"
+          subject-path: |
+            builds/ubuntu-24.04/release/*
+            builds/ubuntu-24.04/environment/*.json
+            builds/windows-2025-vs2026/environment/*.json
       - name: Publish verified prerelease
         env:
           GH_TOKEN: ${{ github.token }}
@@ -95,5 +104,6 @@ jobs:
         run: >-
           gh release create "$RELEASE_TAG" --verify-tag --prerelease --latest=false
           --title "$RELEASE_TITLE" --notes-file "$RELEASE_NOTES"
-          builds/ubuntu-latest/*.zip
-          builds/ubuntu-latest/SHA256SUMS.txt builds/ubuntu-latest/build-record.json
+          builds/ubuntu-24.04/release/*.zip
+          builds/ubuntu-24.04/release/SHA256SUMS.txt builds/ubuntu-24.04/release/build-record.json
+          builds/ubuntu-24.04/environment/*.json builds/windows-2025-vs2026/environment/*.json

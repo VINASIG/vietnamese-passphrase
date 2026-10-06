@@ -14,9 +14,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             python: "3.12.14"
-          - os: windows-latest
+          - os: windows-2025-vs2026
             python: "3.14.8"
     runs-on: ${{ matrix.os }}
     env:
@@ -54,5 +54,20 @@ jobs:
       - run: python scripts/compare_methodology.py
       - name: Check deterministic vocabulary diagnostics and experiments
         run: git diff --exit-code -- docs/research/adversarial research/experimental
-      - name: Build integration package
-        run: npm pack --pack-destination output
+      - name: Build distributions and record actual environment
+        shell: bash
+        env:
+          BUILD_RUNNER_LABEL: ${{ matrix.os }}
+        run: |
+          python scripts/package_release.py --out output/release
+          python scripts/package_release.py --record-environment "output/environment/environment-$BUILD_RUNNER_LABEL.json" --runner-label "$BUILD_RUNNER_LABEL" --assets output/release
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ matrix.os }}
+          path: |
+            output/release/*.zip
+            output/release/SHA256SUMS.txt
+            output/release/build-record.json
+            output/environment/*.json
+          if-no-files-found: error
+          retention-days: 30

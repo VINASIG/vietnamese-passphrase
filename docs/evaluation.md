@@ -4,13 +4,13 @@ The owner requires SI-agent execution and assessment. Human recruitment and stud
 
 1. Freeze the baseline and state an opposing hypothesis before changing a profile. Record exact vocabulary, source and policy revisions.
 2. Separate source bias, selection heuristics, representation and runtime distribution. Never rename a proxy as a human outcome.
-3. Compute independent diagnostics. Validate optimized neighborhood algorithms against exhaustive small-space oracles. Retain full pairs and fold classes.
+3. Compute implementation-independent diagnostics. The same project authors the separate implementation; this is not an independent third-party review. Validate optimized neighborhood algorithms against exhaustive small-space oracles. Retain full pairs and fold classes.
 4. Screen headwords under an explicit context policy. Record exclusions, spelling families, unresolved senses and scope. Unflagged entries are candidates, not certified harmless. Deterministic scores are not linguistic authority.
 5. Compare content, variants, Unicode/ASCII, boundaries and neighborhood constraints with matched controls where possible. ASCII/native controls share indices. Shorter output does not establish better memory.
 6. Publish sensitivity and ablations at several explicit targets. Use Pareto tradeoffs without fitting an arbitrary human-utility score. An optimum claim needs an established objective and evidence.
 7. Pin a licensed external source for lexical attestation. Call same-corpus splits internal robustness. Source separation alone does not establish statistical independence or population representation.
 8. Publish changes as new experimental revisions with manifests, digests, evidence and comparisons. Preserve historical bytes and tags.
-9. Independently rebuild distributions, then verify provenance against expected repository, workflow and source digest. Authenticity does not establish vocabulary quality.
+9. Rebuild distributions on separately recorded environments, then verify provenance against expected repository, workflow and source digest. Authenticity does not establish vocabulary quality.
 
 Agents may inspect meanings and simulate encoding or error scenarios. Never fabricate participants, consent, regional raters, weeks of use, recall statistics, uncertainty intervals for nonexistent observations, or an independent agent panel that did not run. Keep human-evidence uncertainty explicit while completing agent-executable work.
 

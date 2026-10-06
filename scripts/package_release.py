@@ -6,9 +6,11 @@ import io
 import json
 import os
 import pathlib
+import platform
 import shutil
 import subprocess
 import tarfile
+import unicodedata
 import zipfile
 from typing import Any
 
@@ -31,7 +33,7 @@ def build(destination: pathlib.Path) -> None:
     revision = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     raw = subprocess.check_output(["git", "archive", "--format=tar", "HEAD"], cwd=ROOT)
     destination.mkdir(parents=True, exist_ok=True)
-    stage = destination / "staging"
+    stage = destination.with_name(destination.name + "-staging")
     if stage.exists():
         raise ValueError("Use a fresh output folder")
     stage.mkdir()
@@ -93,11 +95,12 @@ def build(destination: pathlib.Path) -> None:
         p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in [package_path, source_path]
     }
     record: dict[str, Any] = {
-        "schema": 1,
+        "schema": 2,
         "sourceCommit": revision,
         "packageVersion": version,
         "releaseTag": release.tag,
         "releaseNotesSha256": release.notes_sha256,
+        "environmentRecords": release_metadata.environment_records(),
         "sha256": hashes,
         "archive": "sorted ZIP_STORED, fixed DOS date 1980-01-01, Unix file modes and no extra fields",
         "assurance": "build origin and byte reproducibility; not vocabulary or independent audit approval",
@@ -117,6 +120,58 @@ def build(destination: pathlib.Path) -> None:
     print(json.dumps({"source": revision, "assets": hashes}, sort_keys=True))
 
 
+def record_environment(destination: pathlib.Path, label: str, assets: pathlib.Path) -> None:
+    release = release_metadata.validate(ROOT)
+    source = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    release_metadata.validate_assets(assets, release, source)
+    npm = shutil.which("npm.cmd" if os.name == "nt" else "npm")
+    if npm is None:
+        raise ValueError("Pinned npm must be on PATH")
+    record = {
+        "schema": 1,
+        "sourceCommit": source,
+        "releaseTag": release.tag,
+        "packageVersion": release.version,
+        "runner": {
+            "label": label,
+            "os": os.environ.get("RUNNER_OS"),
+            "arch": os.environ.get("RUNNER_ARCH"),
+            "environment": os.environ.get("RUNNER_ENVIRONMENT"),
+            "imageOS": os.environ.get("ImageOS"),
+            "imageVersion": os.environ.get("ImageVersion"),
+            "release": platform.release(),
+            "version": platform.version(),
+        },
+        "tools": {
+            "python": platform.python_version(),
+            "pythonImplementation": platform.python_implementation(),
+            "unicode": unicodedata.unidata_version,
+            "node": subprocess.check_output(["node", "--version"], text=True).strip(),
+            "npm": subprocess.check_output([npm, "--version"], text=True).strip(),
+            "git": subprocess.check_output(["git", "--version"], text=True).strip(),
+        },
+        "run": {
+            "id": os.environ.get("GITHUB_RUN_ID"),
+            "attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+            "ref": os.environ.get("GITHUB_REF"),
+        },
+        "artifacts": {
+            path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in assets.iterdir()
+        },
+        "dependencyLocks": {
+            name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+            for name in ("package-lock.json", "requirements-dev.txt")
+        },
+    }
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with destination.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(json.dumps(record, sort_keys=True, separators=(",", ":")) + "\n")
+    release_metadata.validate_environment(
+        destination, label, assets, release, source, ROOT, expected_ref=os.environ.get("GITHUB_REF")
+    )
+    print(json.dumps({"status": "ENVIRONMENT_RECORD_PASS", "path": str(destination)}))
+
+
 def compare(a: pathlib.Path, b: pathlib.Path) -> None:
     def digests(folder: pathlib.Path) -> dict[str, str]:
         return {
@@ -126,7 +181,15 @@ def compare(a: pathlib.Path, b: pathlib.Path) -> None:
         }
 
     left, right = digests(a), digests(b)
-    if len(left) != 4 or left != right:
+    if (
+        len(left) != 4
+        or left != right
+        or any(
+            not path.is_file() or path.is_symlink()
+            for folder in (a, b)
+            for path in folder.iterdir()
+        )
+    ):
         raise ValueError("Distribution bytes differ across environments")
     print(json.dumps({"status": "BYTE_REBUILD_PASS", "sha256": left}, sort_keys=True))
 
@@ -135,13 +198,20 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=pathlib.Path)
     parser.add_argument("--compare", type=pathlib.Path, nargs=2)
+    parser.add_argument("--record-environment", type=pathlib.Path)
+    parser.add_argument("--runner-label", choices=list(release_metadata.BUILD_ENVIRONMENTS))
+    parser.add_argument("--assets", type=pathlib.Path)
     args = parser.parse_args()
-    if args.compare:
+    if args.record_environment:
+        if not args.runner_label or not args.assets or args.compare or args.out:
+            parser.error("Environment capture requires --runner-label and --assets only")
+        record_environment(args.record_environment, args.runner_label, args.assets)
+    elif args.compare:
         compare(*args.compare)
     elif args.out:
         build(args.out)
     else:
-        parser.error("Choose --out or --compare")
+        parser.error("Choose --out, --compare or --record-environment")
 
 
 if __name__ == "__main__":

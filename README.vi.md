@@ -1,14 +1,14 @@
 # Vietnamese Passphrase
 
-Bộ từ vựng passphrase tiếng Việt thử nghiệm có quyết định của SI agents, phép đo độc lập và bộ sinh tham chiếu lấy mẫu đều. Dùng lại danh sách UTF-8 cùng hồ sơ chứng cứ hoặc thư viện TypeScript không có phụ thuộc lúc chạy.
+Bộ từ vựng passphrase tiếng Việt thử nghiệm có quyết định của SI agents, phép đo được triển khai riêng với pipeline chọn từ và bộ sinh tham chiếu lấy mẫu đều. Dùng lại danh sách UTF-8 cùng hồ sơ chứng cứ hoặc thư viện TypeScript không có phụ thuộc lúc chạy. Mã đo vẫn do dự án xây dựng, chưa phải thẩm định của bên thứ ba độc lập.
 
 [English](README.md) · [Nghiên cứu](docs/research.md) · [Mô hình bảo mật](docs/security.md)
 
 ## Bản nghiên cứu hiện hành
 
-**[v0.2.4](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.4)** là bản nghiên cứu thử nghiệm hiện hành do agent đánh giá. [Metadata phát hành](release.json) ghi tag, file notes và kênh thử nghiệm cụ thể. Chưa có bản ổn định và chưa có profile mặc định tốt nhất cho mọi người. Endpoint latest của GitHub không chọn prerelease, nên dùng liên kết phiên bản cụ thể ở trên.
+**[v0.2.5](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.5)** là bản nghiên cứu thử nghiệm hiện hành do agent đánh giá. [Metadata phát hành](release.json) ghi tag, file notes và kênh thử nghiệm cụ thể. Chưa có bản ổn định và chưa có profile mặc định tốt nhất cho mọi người. Endpoint latest của GitHub không chọn prerelease, nên dùng liên kết phiên bản cụ thể ở trên.
 
-[Hồ sơ giao nhận](docs/publication-v0.2.4.json) ghi commit nguồn, notes đúng phiên bản, byte tải lại, attestation và nội dung trang công khai đã kiểm tra. [Kết quả xác minh](docs/verification-v0.2.4.md) tách các phép kiểm tra này khỏi bằng chứng về chất lượng từ vựng.
+[Hồ sơ giao nhận v0.2.4](docs/publication-v0.2.4.json) và [kết quả xác minh v0.2.4](docs/verification-v0.2.4.md) giữ nguyên commit nguồn, byte tải lại và phạm vi attestation. Kết quả giao nhận v0.2.5 được ghi sau phát hành, tách khỏi bằng chứng về chất lượng từ vựng.
 
 Theo quy tắc của chủ dự án, SI agents thực hiện công việc và đánh giá. Một agent đã sàng lọc ở mức đầu mục. Chưa có dữ liệu người Việt về khả năng ghi nhớ, mức quen thuộc hay lỗi nhập, chưa có thẩm định ngôn ngữ hoặc kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39. Dự án chưa tuyên bố chuẩn passphrase tiếng Việt hoặc vocabulary tốt nhất.
 
@@ -35,6 +35,8 @@ Ranh giới tiếng trong token được mã hóa bằng `_`, trừ thử nghi�
 
 Dùng Node 24.21.0 và npm 12.2.0. Gói chưa được phát hành lên npm.
 
+Hai nhóm lệnh Unicode và ASCII dưới đây chỉ minh họa cách gọi API. Profile, thứ tự ví dụ và mục tiêu 80 bit đều không phải khuyến nghị. Cần chọn dựa trên bằng chứng của từng profile và giới hạn của hệ thống tích hợp.
+
 ```sh
 git clone https://github.com/VINASIG/vietnamese-passphrase.git
 cd vietnamese-passphrase
@@ -43,8 +45,9 @@ npm run build
 node dist/cli.js verify
 node dist/cli.js profiles
 node dist/cli.js info --profile experimental-agent-vi
+node dist/cli.js info --profile experimental-agent-ascii
 node dist/cli.js generate --profile experimental-agent-vi --bits 80
-node dist/cli.js generate --profile experimental-agent-ascii --words 8 --json
+node dist/cli.js generate --profile experimental-agent-ascii --bits 80 --json
 ```
 
 Mục tiêu 80 bit chỉ là ví dụ, cần chọn theo hệ thống cụ thể. Lệnh generate in bí mật ra terminal và ghi giới hạn bằng chứng vào standard error. Chương trình dùng nguồn ngẫu nhiên bảo mật của hệ thống, không tải lên mạng hay tự lưu bí mật. Môi trường terminal và ứng dụng tích hợp vẫn cần xử lý bí mật đúng cách. Không dùng câu trong tài liệu hoặc test làm mật khẩu thật.
