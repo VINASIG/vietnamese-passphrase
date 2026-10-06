@@ -6,6 +6,8 @@ Vietnamese passphrase wordlists with source evidence, reproducible selection and
 
 Version 0.2.3 is an **agent-assessed research preview**. The owner requires SI-agent execution and assessment. Human linguistic validation, a Vietnamese memorability study, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
 
+The [v0.2.3 prerelease](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.3) includes independently rebuilt ZIP distributions and verified build-origin attestations. [Delivery evidence](docs/publication-v0.2.json) records exact hashes and verification policy.
+
 Read the [adversarial findings and methodology changes](docs/adversarial-review.md), [assurance boundary](docs/assurance.md) and [downstream redistribution guide](docs/downstream.md). The three v0.1 lists below are immutable historical baselines; their sizes are heuristic outputs rather than proven optima. The [v0.2 release procedure](docs/release-security.md) compares distribution bytes across environments and verifies build-origin attestations separately from vocabulary quality.
 
 The [v0.1.0 prerelease](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0) supplies a local integration package, preserved original production inputs and SHA-256 checksums. The [publication record](docs/publication-plan.json) identifies the source revision, downloaded asset verification and related public listings.

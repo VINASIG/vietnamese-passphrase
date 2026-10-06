@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "version": "0.2.3",
+  "status": "prerelease",
+  "sourceCommit": "9e690f30a98644c266e95a0113764b11264015c0",
+  "release": "https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.3",
+  "releaseWorkflowRun": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37448525260",
+  "releaseSourceCI": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37448525258",
+  "buildEnvironments": ["Linux Python 3.12.14", "Windows Python 3.14.8"],
+  "fourFileCrossEnvironmentByteComparison": "PASS",
+  "assets": [
+    {
+      "name": "build-record.json",
+      "bytes": 495,
+      "sha256": "3ed4ba0737fc7d9dea2ced84b08f04d4ce2aaea198e41012a4db84fa0c40c256",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 274,
+      "sha256": "e0a3fee4816efef095bc47c8f71c58381c17dd7958d69ed13d93e3b93d4042a8",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    },
+    {
+      "name": "source-v0.2.3.zip",
+      "bytes": 44152337,
+      "sha256": "9f67080c178639d2d597a0372bd3a2d94b7d9530b1c3dd77fa7a16c419c2ff22",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    },
+    {
+      "name": "vinasig-vietnamese-passphrase-0.2.3.zip",
+      "bytes": 43908928,
+      "sha256": "c8045d4120b7c8f6d25e7f0eb45a9a4db4a296b52f5bd800355ed5b842677a20",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    }
+  ],
+  "verificationPolicy": {
+    "repo": "VINASIG/vietnamese-passphrase",
+    "signerWorkflow": "VINASIG/vietnamese-passphrase/.github/workflows/release.yml",
+    "sourceDigest": "9e690f30a98644c266e95a0113764b11264015c0",
+    "sourceRef": "refs/tags/v0.2.3",
+    "denySelfHostedRunners": true
+  },
+  "integrationInspection": {
+    "extractor": "PowerShell Expand-Archive (.NET)",
+    "profilesExercised": 8,
+    "sourceAndAttributionBytes": "PASS",
+    "legacyWordlists": "UNCHANGED"
+  },
+  "orgProfileCommit": "26eb210f54cb434eaa5164309cc609a4b3508b4a",
+  "repoDetails": "description, homepage and topics read back",
+  "assuranceBoundary": "Build-origin and structural evidence; single agent headword assessment, no independent security audit or human validation",
+  "failedUnpublishedReleaseTags": ["v0.2.0", "v0.2.1", "v0.2.2"],
+  "historicalRelease": "v0.1.0 assets and data retained unchanged"
+}

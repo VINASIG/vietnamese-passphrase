@@ -18,6 +18,8 @@ Kích thước xuất phát từ các tiêu chí nguồn dữ liệu và lọc t
 
 Từ ghép `bánh mì` được biểu diễn bằng `bánh_mì`. Giữa các mục dùng dấu khác, chẳng hạn `-`. Phải giữ ranh giới này. Không bỏ dấu sau khi sinh, không tự chọn từ yêu thích, không đổi thứ tự và không cắt câu mật khẩu cho vừa ô nhập.
 
+[Bản thử nghiệm v0.2.3](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.3) đã qua đối chiếu byte giữa Linux và Windows, tải lại và xác minh provenance với repo, workflow, tag và commit cụ thể. [Hồ sơ kiểm chứng](docs/publication-v0.2.json) lưu hash và phạm vi. Gói ZIP khoảng 44 MB mỗi file, chứa dữ liệu kiểm chứng và giấy phép; các file wordlist riêng vẫn nhỏ.
+
 ## Các profile thử nghiệm riêng
 
 Ba danh sách v0.1 ở trên được giữ nguyên từng byte làm mốc đối chiếu. Kích thước 3.057 là kết quả heuristic, chưa được chứng minh tối ưu. [Báo cáo phản biện và phương pháp mới](docs/adversarial-review.md) tách đo cấu trúc, chứng cứ corpus, quyết định của agent và những điều chưa biết về người dùng.
