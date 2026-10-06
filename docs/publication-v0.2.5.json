@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "version": "0.2.5",
+  "status": "prerelease",
+  "sourceCommit": "8089c40679d38177ff6ea6b7fe3c5c45929b220b",
+  "release": "https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.5",
+  "releaseWorkflowRun": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37458797093",
+  "releaseSourceCI": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37458797248",
+  "mainSourceCI": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37458287694",
+  "notesSha256": "d672948b3cbaedb88d40e86c1e4ffdc22c0c5599bb5ff6c1fdeb9934c5fe1fd7",
+  "releaseName": "Vietnamese Passphrase 0.2.5 agent-assessed research preview",
+  "deliveredNotesMatch": "PASS",
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 274,
+      "sha256": "d3150d75ee468fc7d9caebc8373d96e19c1ad5a4259159b05352d333a06001bc",
+      "downloadDigestMatchesAPI": "PASS",
+      "attestationVerification": "PASS",
+      "downloadedByteComparisonWithLocalBuild": "PASS"
+    },
+    {
+      "name": "build-record.json",
+      "bytes": 736,
+      "sha256": "83b152c6310284fa155b17a39fdfdffdc5f1e6eae6d1b81c0e827ea9d4f43975",
+      "downloadDigestMatchesAPI": "PASS",
+      "attestationVerification": "PASS",
+      "downloadedByteComparisonWithLocalBuild": "PASS"
+    },
+    {
+      "name": "environment-ubuntu-24.04.json",
+      "bytes": 1132,
+      "sha256": "e3d927539f29881d1e3d5d2d055b84a76b3c3e5f42ce529b52a897e2bbd4702f",
+      "downloadDigestMatchesAPI": "PASS",
+      "attestationVerification": "PASS",
+      "exactTagRunAndArtifactBindings": "PASS"
+    },
+    {
+      "name": "environment-windows-2025-vs2026.json",
+      "bytes": 1114,
+      "sha256": "21465bf52782b701c2d1e0f9e2d8ba2a576a7874b5d988a3f59511528804a026",
+      "downloadDigestMatchesAPI": "PASS",
+      "attestationVerification": "PASS",
+      "exactTagRunAndArtifactBindings": "PASS"
+    },
+    {
+      "name": "source-v0.2.5.zip",
+      "bytes": 44236280,
+      "sha256": "5cd69a3736e9fad7044bce858643f39ac987117882f51078fff6a7a7e18b9c6f",
+      "downloadDigestMatchesAPI": "PASS",
+      "attestationVerification": "PASS",
+      "downloadedByteComparisonWithLocalBuild": "PASS"
+    },
+    {
+      "name": "vinasig-vietnamese-passphrase-0.2.5.zip",
+      "bytes": 43994169,
+      "sha256": "5582ba0ac80866749ca93e090da48f8e67f9811c5d411caf9873dfd414fcc01c",
+      "downloadDigestMatchesAPI": "PASS",
+      "attestationVerification": "PASS",
+      "downloadedByteComparisonWithLocalBuild": "PASS"
+    }
+  ],
+  "environments": [
+    {
+      "file": "environment-ubuntu-24.04.json",
+      "runner": {
+        "arch": "X64",
+        "environment": "github-hosted",
+        "imageOS": "ubuntu24",
+        "imageVersion": "20260927.320.1",
+        "label": "ubuntu-24.04",
+        "os": "Linux",
+        "release": "6.17.0-1022-azure",
+        "version": "#22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026"
+      },
+      "tools": {
+        "git": "git version 2.55.0",
+        "node": "v24.21.0",
+        "npm": "12.2.0",
+        "python": "3.12.14",
+        "pythonImplementation": "CPython",
+        "unicode": "15.0.0"
+      },
+      "run": {
+        "attempt": "1",
+        "id": "37458797093",
+        "ref": "refs/tags/v0.2.5"
+      },
+      "artifactAndLockBindings": "PASS"
+    },
+    {
+      "file": "environment-windows-2025-vs2026.json",
+      "runner": {
+        "arch": "X64",
+        "environment": "github-hosted",
+        "imageOS": "win25-vs2026",
+        "imageVersion": "20260925.250.1",
+        "label": "windows-2025-vs2026",
+        "os": "Windows",
+        "release": "2025Server",
+        "version": "10.0.26100"
+      },
+      "tools": {
+        "git": "git version 2.55.0.windows.5",
+        "node": "v24.21.0",
+        "npm": "12.2.0",
+        "python": "3.14.8",
+        "pythonImplementation": "CPython",
+        "unicode": "16.0.0"
+      },
+      "run": {
+        "attempt": "1",
+        "id": "37458797093",
+        "ref": "refs/tags/v0.2.5"
+      },
+      "artifactAndLockBindings": "PASS"
+    }
+  ],
+  "verificationPolicy": {
+    "repo": "VINASIG/vietnamese-passphrase",
+    "signerWorkflow": "VINASIG/vietnamese-passphrase/.github/workflows/release.yml",
+    "sourceDigest": "8089c40679d38177ff6ea6b7fe3c5c45929b220b",
+    "sourceRef": "refs/tags/v0.2.5",
+    "denySelfHostedRunners": true
+  },
+  "fourFileCrossEnvironmentByteComparison": "PASS",
+  "localAndMainCIByteComparison": "PASS",
+  "environmentEvidenceScope": "Observed hosted image and tool versions, selected OS labels and bound artifacts; no saved VM/container image or long-term hermetic guarantee",
+  "privateVulnerabilityReporting": true,
+  "repositoryDetails": {
+    "default_branch": "main",
+    "description": "Experimental Vietnamese passphrase vocabularies, SI-agent assessment, implementation-independent diagnostics and uniform reference generation. Research preview.",
+    "homepage": "https://github.com/VINASIG/vietnamese-passphrase#current-research-preview",
+    "topics": [
+      "cryptography",
+      "diceware",
+      "passphrase",
+      "reproducible-research",
+      "typescript",
+      "unicode",
+      "vietnamese",
+      "wordlist"
+    ],
+    "visibility": "public"
+  },
+  "integrationInspection": {
+    "extractor": "PowerShell Expand-Archive (.NET)",
+    "verifiedSourceAndPolicyFiles": [
+      "SECURITY.md",
+      "release.json",
+      "research/profile-catalog.json",
+      "src/profiles.ts",
+      "src/cli.ts",
+      "scripts/package_release.py",
+      "scripts/release_metadata.py",
+      "tests/publication_test.py",
+      "docs/releases/v0.2.5.md",
+      "docs/release-security.md",
+      "README.md",
+      "LICENSE",
+      "LICENSES.md",
+      "NOTICE.md"
+    ],
+    "examplesOnly": true,
+    "profilesExercised": [
+      {
+        "name": "experimental-agent-vi",
+        "entries": 2966,
+        "status": "experimental-single-agent-headword-assessment",
+        "generation": "disposable check passed"
+      },
+      {
+        "name": "experimental-agent-vi-fused",
+        "entries": 2966,
+        "status": "experimental-single-agent-headword-assessment",
+        "generation": "disposable check passed"
+      },
+      {
+        "name": "experimental-agent-ascii",
+        "entries": 2389,
+        "status": "experimental-single-agent-headword-assessment",
+        "generation": "disposable check passed"
+      },
+      {
+        "name": "experimental-agent-distance1",
+        "entries": 2045,
+        "status": "experimental-single-agent-headword-assessment",
+        "generation": "disposable check passed"
+      },
+      {
+        "name": "control-paired-native",
+        "entries": 2389,
+        "status": "experimental-representation-control",
+        "generation": "blocked before output"
+      },
+      {
+        "name": "historical-vi-v1",
+        "entries": 3057,
+        "status": "historical-heuristic-baseline",
+        "generation": "disposable check passed"
+      },
+      {
+        "name": "historical-ascii-v1",
+        "entries": 2464,
+        "status": "historical-heuristic-baseline",
+        "generation": "disposable check passed"
+      },
+      {
+        "name": "diagnostic-short-v1",
+        "entries": 1293,
+        "status": "diagnostic-only-high-confusability",
+        "generation": "blocked before output"
+      }
+    ],
+    "secretsRetained": false
+  },
+  "publicEntryPoint": {
+    "defaultBranch": "main",
+    "renderedContent": [
+      {
+        "name": "en",
+        "url": "https://github.com/VINASIG/vietnamese-passphrase",
+        "heading": "Current research preview",
+        "firstTable": "Canonical profile\tEntries\tExperiment and limitation\nexperimental-agent-vi\t2,966\tAgent context-screened native candidate. Headword screening does not cover all senses or combinations\nexperimental-agent-vi-fused\t2,966\tRemoves internal underscores before sampling. Saves characters but hides syllable boundaries\nexperimental-agent-ascii\t2,389\tUniform distinct folded strings. Semantic distinctions remain lost\nexperimental-agent-distance1\t2,045\tGreedy distance-one constrained subset. Longer phrases and other similarities remain",
+        "examplesAreIllustrative": true,
+        "unicodeAndAsciiExamplesPresent": true,
+        "diagnosticAuthorshipClarified": true,
+        "status": "current experimental entrypoint rendered"
+      },
+      {
+        "name": "vi",
+        "url": "https://github.com/VINASIG/vietnamese-passphrase/blob/main/README.vi.md",
+        "heading": "Bản nghiên cứu hiện hành",
+        "firstTable": "Profile\tSố mục\tThử nghiệm và giới hạn\nexperimental-agent-vi\t2.966\tỨng viên có dấu, sàng lọc ngữ cảnh bởi agent. Chưa xét hết các nghĩa và tổ hợp từ\nexperimental-agent-vi-fused\t2.966\tViết liền token trước khi lấy mẫu. Ngắn hơn nhưng không hiện ranh giới tiếng\nexperimental-agent-ascii\t2.389\tLấy mẫu đều trên các chuỗi bỏ dấu duy nhất. Phân biệt ngữ nghĩa vẫn bị mất\nexperimental-agent-distance1\t2.045\tTập con theo ràng buộc khoảng cách một codepoint. Câu dài hơn và còn các dạng gần nhau khác",
+        "examplesAreIllustrative": true,
+        "unicodeAndAsciiExamplesPresent": true,
+        "diagnosticAuthorshipClarified": true,
+        "status": "current experimental entrypoint rendered"
+      },
+      {
+        "name": "security",
+        "url": "https://github.com/VINASIG/vietnamese-passphrase/security/policy",
+        "status": "security policy rendered"
+      }
+    ],
+    "scope": "Actual anonymous rendered Markdown content; GitHub stylesheet/layout behavior not assessed"
+  },
+  "relatedPublicListings": "Website inventory and both organization profile languages reviewed; existing research-preview descriptions remain accurate",
+  "historicalDeliveryDigests": "v0.1.0, v0.2.3 and v0.2.4 unchanged according to release API readback",
+  "assuranceBoundary": "Agent assessment, tested implementation and artifact origin only; no human recall or entry study or independent third-party security audit"
+}
