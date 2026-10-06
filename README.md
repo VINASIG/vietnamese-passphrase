@@ -1,31 +1,31 @@
 # Vietnamese Passphrase
 
-Experimental Vietnamese passphrase vocabularies with attributable SI-agent decisions, implementation-independent diagnostics and a uniform reference generator. Reuse the UTF-8 lists and evidence, or integrate the dependency-free TypeScript library.
+Vietnamese passphrase vocabularies with traceable SI-agent curation, implementation-independent diagnostics and a uniform reference generator. Reuse the UTF-8 lists and evidence, or integrate the dependency-free TypeScript library.
 
 [Đọc bằng tiếng Việt](README.vi.md) · [Research and comparisons](docs/research.md) · [Security model](docs/security.md) · [Data specification](docs/specification.md)
 
 ## Current research preview
 
-**[v0.2.5](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.5)** is the current agent-assessed research preview. [Release identity](release.json) pins the exact notes and preview channel. There is no stable release and no recommended universal profile. GitHub's stable latest-release endpoint does not select prereleases, so use this explicit version rather than a latest URL.
+**[v0.2.5](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.5)** is the current agent-assessed research preview. [Release identity](release.json) pins the exact notes and preview channel. The release channel is research preview, and generation requires an explicit profile. Use the versioned link above because GitHub's stable latest-release endpoint excludes prereleases.
 
 [Delivered artifact evidence](docs/publication-v0.2.5.json) records the exact source, matching notes, downloaded bytes, all six attestation verifications and actual runner images/toolchains. [Verification observations](docs/verification-v0.2.5.md) keep those results separate from vocabulary evidence. The prior [v0.2.4 delivery](docs/publication-v0.2.4.json) retains its original scope.
 
-The owner requires SI-agent execution and assessment. One agent screened headwords. Human linguistic validation, Vietnamese recall and entry performance, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
+SI agents curate the vocabulary and record their decisions. The [evidence scope](docs/assurance.md) identifies which findings come from automated checks, agent assessment and external observations. Vocabulary, distribution and release verification each have their own evidence records.
 
 Read the [methodology findings](docs/adversarial-review.md), [assurance boundary](docs/assurance.md), [publication semantics](docs/publication-semantics.md) and [downstream guide](docs/downstream.md). The [research roadmap](docs/research-roadmap.md) separates further automated research from claims requiring actual Vietnamese participants. Report vulnerabilities privately through [SECURITY.md](SECURITY.md).
 
-## Current experimental catalog
+## Vocabulary profiles
 
-Names identify evidence and intended usage. Transformation-only data IDs remain immutable inside the [experimental data revision](research/experimental/2026-10-06.agent-1/), with digests, decisions and full comparisons. They are deprecated CLI aliases, not recommendations. No profile below has measured human memorability or entry performance.
+Names identify evidence and intended usage. Transformation-only data IDs remain immutable inside the [experimental data revision](research/experimental/2026-10-06.agent-1/), with digests, decisions and full comparisons. The CLI exposes the canonical IDs below, with legacy IDs retained as deprecated aliases. See the linked evidence records when selecting a profile for integration.
 
-| Canonical profile              | Entries | Experiment and limitation                                                                             |
-| ------------------------------ | ------: | ----------------------------------------------------------------------------------------------------- |
-| `experimental-agent-vi`        |   2,966 | Agent context-screened native candidate. Headword screening does not cover all senses or combinations |
-| `experimental-agent-vi-fused`  |   2,966 | Removes internal underscores before sampling. Saves characters but hides syllable boundaries          |
-| `experimental-agent-ascii`     |   2,389 | Uniform distinct folded strings. Semantic distinctions remain lost                                    |
-| `experimental-agent-distance1` |   2,045 | Greedy distance-one constrained subset. Longer phrases and other similarities remain                  |
+| Canonical profile              | Entries | Representation and selection                                                |
+| ------------------------------ | ------: | --------------------------------------------------------------------------- |
+| `experimental-agent-vi`        |   2,966 | Accented tokens with agent context screening and a recorded decision ledger |
+| `experimental-agent-vi-fused`  |   2,966 | Fused representation with internal underscores removed before sampling      |
+| `experimental-agent-ascii`     |   2,389 | Distinct accent-free strings, deduplicated before uniform sampling          |
+| `experimental-agent-distance1` |   2,045 | Subset selected by a recorded greedy distance-one constraint                |
 
-`control-paired-native` has 2,389 native representatives matched to ASCII indices. It is a comparison control, with CLI generation disabled. Historical baseline names begin with `historical-`. The retired `diagnostic-short-v1` has about 96% distance-one neighborhood involvement and cannot generate through the current CLI or Python example. Its data remains available only as a diagnostic/reproduction artifact. See [historical and diagnostic baselines](docs/historical-baselines.md).
+`control-paired-native` has 2,389 native representatives matched to ASCII indices. It is a comparison control, with CLI generation disabled. Historical baseline names begin with `historical-`. The retired `diagnostic-short-v1` is available for diagnostic reproduction and has generation disabled in the current CLI and Python example. See [historical and diagnostic baselines](docs/historical-baselines.md).
 
 The [machine-readable catalog](research/profile-catalog.json) records evidence, purpose and generation policy for all eight profiles. Renaming does not change data bytes or entropy. The generic library accepts caller-supplied vocabularies and does not enforce the CLI policy. Downstream applications must choose and enforce their own evidence and usage requirements.
 
@@ -35,7 +35,7 @@ An internal syllable space is encoded as `_` except in the explicit fused experi
 
 Use Node 24.21.0 and npm 12.2.0. The package has no runtime dependencies and is not published to npm. Clone the source and build it.
 
-The Unicode and ASCII commands below are parallel API examples only. Neither profile, their order, nor the illustrative 80-bit target is a recommendation. Choose a profile and target after reviewing its evidence and your application's constraints.
+The Unicode and ASCII commands below demonstrate the same API with two representations. Select the profile and bit target explicitly according to the evidence records and your application's constraints.
 
 ```sh
 git clone https://github.com/VINASIG/vietnamese-passphrase.git

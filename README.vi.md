@@ -1,41 +1,41 @@
 # Vietnamese Passphrase
 
-Bộ từ vựng passphrase tiếng Việt thử nghiệm có quyết định của SI agents, phép đo được triển khai riêng với pipeline chọn từ và bộ sinh tham chiếu lấy mẫu đều. Dùng lại danh sách UTF-8 cùng hồ sơ chứng cứ hoặc thư viện TypeScript không có phụ thuộc lúc chạy. Mã đo vẫn do dự án xây dựng, chưa phải thẩm định của bên thứ ba độc lập.
+Bộ từ vựng passphrase tiếng Việt có quyết định tuyển chọn của SI agents, phép đo được triển khai riêng với pipeline chọn từ và bộ sinh tham chiếu lấy mẫu đều. Dùng lại danh sách UTF-8 cùng hồ sơ chứng cứ hoặc thư viện TypeScript không có phụ thuộc lúc chạy.
 
 [English](README.md) · [Nghiên cứu](docs/research.md) · [Mô hình bảo mật](docs/security.md)
 
 ## Bản nghiên cứu hiện hành
 
-**[v0.2.5](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.5)** là bản nghiên cứu thử nghiệm hiện hành do agent đánh giá. [Metadata phát hành](release.json) ghi tag, file notes và kênh thử nghiệm cụ thể. Chưa có bản ổn định và chưa có profile mặc định tốt nhất cho mọi người. Endpoint latest của GitHub không chọn prerelease, nên dùng liên kết phiên bản cụ thể ở trên.
+**[v0.2.5](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.5)** là bản nghiên cứu thử nghiệm hiện hành do agent đánh giá. [Metadata phát hành](release.json) ghi tag, file notes và kênh thử nghiệm cụ thể. Kênh phát hành là bản nghiên cứu và bộ sinh yêu cầu chọn profile cụ thể. Endpoint latest của GitHub không chọn prerelease, nên dùng liên kết phiên bản ở trên.
 
 [Hồ sơ giao nhận](docs/publication-v0.2.5.json) ghi commit nguồn, notes đúng phiên bản, byte tải lại, sáu lần xác minh attestation và image/toolchain thực tế. [Kết quả xác minh](docs/verification-v0.2.5.md) tách các phép kiểm tra này khỏi bằng chứng về chất lượng từ vựng. [Hồ sơ v0.2.4](docs/publication-v0.2.4.json) giữ nguyên phạm vi ban đầu.
 
-Theo quy tắc của chủ dự án, SI agents thực hiện công việc và đánh giá. Một agent đã sàng lọc ở mức đầu mục. Chưa có dữ liệu người Việt về khả năng ghi nhớ, mức quen thuộc hay lỗi nhập, chưa có thẩm định ngôn ngữ hoặc kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39. Dự án chưa tuyên bố chuẩn passphrase tiếng Việt hoặc vocabulary tốt nhất.
+SI agents tuyển chọn từ vựng và ghi lại từng quyết định. [Phạm vi bằng chứng](docs/assurance.md) phân biệt kết quả kiểm tra tự động, đánh giá của agent và quan sát bên ngoài. Từ vựng, phân phối lấy mẫu và xác minh phát hành có hồ sơ riêng.
 
 Đọc [kết quả phản biện](docs/adversarial-review.md), [phạm vi bảo đảm](docs/assurance.md), [cách giới thiệu phiên bản và profile](docs/publication-semantics.md) và [hướng dẫn phân phối lại](docs/downstream.md). [Lộ trình nghiên cứu](docs/research-roadmap.md) phân biệt phần có thể kiểm tra thêm bằng tự động với phần cần quan sát người Việt thật. Báo cáo lỗ hổng qua kênh riêng được ghi trong [SECURITY.md](SECURITY.md).
 
-## Các profile thử nghiệm hiện hành
+## Các profile từ vựng
 
-Tên sử dụng thể hiện mức bằng chứng và mục đích. Tên file cũ được giữ nguyên trong [revision dữ liệu thử nghiệm](research/experimental/2026-10-06.agent-1/) và vẫn là alias CLI đã được đánh dấu cũ. Việc đổi tên không đổi byte dữ liệu hay entropy. Chưa profile nào có đo lường khả năng ghi nhớ hoặc lỗi nhập của người dùng.
+Tên sử dụng thể hiện mức bằng chứng và mục đích. Tên file cũ được giữ nguyên trong [revision dữ liệu thử nghiệm](research/experimental/2026-10-06.agent-1/) và vẫn là alias CLI đã được đánh dấu cũ. Việc đổi tên không đổi byte dữ liệu hay entropy. Xem hồ sơ bằng chứng được liên kết khi chọn profile để tích hợp.
 
-| Profile                        | Số mục | Thử nghiệm và giới hạn                                                                      |
-| ------------------------------ | -----: | ------------------------------------------------------------------------------------------- |
-| `experimental-agent-vi`        |  2.966 | Ứng viên có dấu, sàng lọc ngữ cảnh bởi agent. Chưa xét hết các nghĩa và tổ hợp từ           |
-| `experimental-agent-vi-fused`  |  2.966 | Viết liền token trước khi lấy mẫu. Ngắn hơn nhưng không hiện ranh giới tiếng                |
-| `experimental-agent-ascii`     |  2.389 | Lấy mẫu đều trên các chuỗi bỏ dấu duy nhất. Phân biệt ngữ nghĩa vẫn bị mất                  |
-| `experimental-agent-distance1` |  2.045 | Tập con theo ràng buộc khoảng cách một codepoint. Câu dài hơn và còn các dạng gần nhau khác |
+| Profile                        | Số mục | Biểu diễn và cách chọn                                                       |
+| ------------------------------ | -----: | ---------------------------------------------------------------------------- |
+| `experimental-agent-vi`        |  2.966 | Token có dấu, sàng lọc ngữ cảnh bởi agent với hồ sơ quyết định               |
+| `experimental-agent-vi-fused`  |  2.966 | Biểu diễn viết liền, bỏ gạch dưới bên trong token trước khi lấy mẫu          |
+| `experimental-agent-ascii`     |  2.389 | Các chuỗi không dấu duy nhất, gộp trùng trước khi lấy mẫu đều                |
+| `experimental-agent-distance1` |  2.045 | Tập con theo ràng buộc khoảng cách một codepoint với thuật toán được ghi lại |
 
-`control-paired-native` gồm 2.389 mục đối chứng có dấu, dùng chung chỉ mục với ASCII. Đây là bộ đối chứng, CLI không cho sinh passphrase. Các baseline lịch sử có tên bắt đầu bằng `historical-`. `diagnostic-short-v1` là bộ ngắn đã rút khỏi cách dùng thông thường vì khoảng 96% token có hàng xóm cách một ký tự. CLI và ví dụ Python từ chối sinh từ bộ này, kể cả alias `vi-short`. Đó là đặc tính cấu trúc, không phải tỷ lệ người dùng gõ sai. File vẫn được giữ để tái lập và chẩn đoán trong [hồ sơ baseline lịch sử](docs/historical-baselines.md).
+`control-paired-native` gồm 2.389 mục đối chứng có dấu, dùng chung chỉ mục với ASCII. Đây là bộ đối chứng, CLI không cho sinh passphrase. Các baseline lịch sử có tên bắt đầu bằng `historical-`. `diagnostic-short-v1` được giữ để tái lập và chẩn đoán, với chức năng sinh đã tắt trong CLI và ví dụ Python, kể cả alias `vi-short`. Xem [hồ sơ baseline lịch sử](docs/historical-baselines.md).
 
 [Catalog](research/profile-catalog.json) ghi bằng chứng, mục đích và chính sách sinh của đủ tám profile. Thư viện tổng quát vẫn nhận danh sách do ứng dụng truyền vào và không tự thực thi chính sách catalog. Ứng dụng tích hợp cần tự chọn và thực thi yêu cầu phù hợp.
 
-Ranh giới tiếng trong token được mã hóa bằng `_`, trừ thử nghiệm viết liền cụ thể. Giữa các token dùng dấu phân cách được hỗ trợ. Không bỏ dấu sau khi sinh, không tự chọn từ yêu thích, đổi thứ tự hay cắt câu cho vừa ô nhập. Kích thước danh sách là kết quả tiêu chí nguồn và lọc từ, chưa được chứng minh tối ưu.
+Ranh giới tiếng trong token được mã hóa bằng `_`, trừ thử nghiệm viết liền cụ thể. Giữa các token dùng dấu phân cách được hỗ trợ. Không bỏ dấu sau khi sinh, không tự chọn từ yêu thích, đổi thứ tự hay cắt câu cho vừa ô nhập. Kích thước danh sách được xác định từ tiêu chí nguồn và lọc từ đã ghi trong hồ sơ.
 
 ## Dùng thử
 
 Dùng Node 24.21.0 và npm 12.2.0. Gói chưa được phát hành lên npm.
 
-Hai nhóm lệnh Unicode và ASCII dưới đây chỉ minh họa cách gọi API. Profile, thứ tự ví dụ và mục tiêu 80 bit đều không phải khuyến nghị. Cần chọn dựa trên bằng chứng của từng profile và giới hạn của hệ thống tích hợp.
+Hai nhóm lệnh Unicode và ASCII dưới đây minh họa cùng API với hai cách biểu diễn. Chọn profile và mục tiêu bit cụ thể theo hồ sơ bằng chứng và yêu cầu của hệ thống tích hợp.
 
 ```sh
 git clone https://github.com/VINASIG/vietnamese-passphrase.git
