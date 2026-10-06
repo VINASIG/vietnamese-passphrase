@@ -1,5 +1,5 @@
 {
-  "status": "source-and-org-profile-published-release-in-progress",
+  "status": "published-verified",
   "repository": "VINASIG/vietnamese-passphrase",
   "description": "Reproducible Vietnamese passphrase wordlists with per-word evidence and uniform reference generation. Research preview.",
   "homepage": "https://github.com/VINASIG/vietnamese-passphrase#readme",
@@ -15,23 +15,41 @@
   ],
   "release": {
     "tag": "v0.1.0",
+    "url": "https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0",
+    "sourceRevision": "55b604e8e8043852459be5dc23943f76c88472d3",
+    "dataVersion": "2026-10-06.1",
     "prerelease": true,
     "title": "Vietnamese Passphrase 0.1.0 research preview",
     "assets": [
-      "vinasig-vietnamese-passphrase-0.1.0.tgz",
-      "source-snapshot-2026-10-06.1.tar.gz",
-      "SHA256SUMS.txt"
-    ]
+      {
+        "filename": "vinasig-vietnamese-passphrase-0.1.0.tgz",
+        "bytes": 847059,
+        "sha256": "2419e423a6b43d0fb590754e3477c8cfb72c2bfff582b76cbfc9a531ac773d2c"
+      },
+      {
+        "filename": "source-snapshot-2026-10-06.1.tar.gz",
+        "bytes": 45980806,
+        "sha256": "3275d1778ce72ce32799ab92b1b9d688b173161ff84764b087af023a1bc30698"
+      },
+      {
+        "filename": "SHA256SUMS.txt",
+        "bytes": 208,
+        "sha256": "2cb127f006bce55079ce30f86955017a76de7c635e03ee6577c6426fb33edf1f"
+      }
+    ],
+    "verification": {
+      "status": "PASS",
+      "date": "2026-10-06",
+      "method": "Downloaded all three release assets from GitHub. Checksum manifest bytes match the reviewed local delivery. Both archive hashes and lengths match the manifest and GitHub digest readback. The extracted integration package verifies all three profiles, and source, declarations, data and notices match the release source.",
+      "immutable": true
+    }
   },
   "repoDetailsReadbackRequired": true,
   "relatedUpdates": [
-    "VINASIG/vinasig shared resource and Vietnamese locale entry",
-    "VINASIG/.github English and Vietnamese shared-resource rows"
+    "VINASIG/vinasig separate Data and libraries inventory and Vietnamese locale",
+    "VINASIG/.github separate Data and libraries sections in English and Vietnamese"
   ],
-  "unperformed": [
-    "tag and release",
-    "website inventory publication and deployment"
-  ],
+  "unperformed": [],
   "newDomain": null,
   "npmPublication": false,
   "visibility": "public",
@@ -43,8 +61,9 @@
   },
   "sourceVerification": {
     "status": "PASS",
-    "revision": "f00d610e21ceea87a3ef6c7e645099701771d099",
-    "run": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37434900505",
+    "revision": "55b604e8e8043852459be5dc23943f76c88472d3",
+    "scope": "Immutable v0.1.0 release source. Subsequent publication-record documentation is separate.",
+    "run": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37436275886",
     "matrix": [
       {
         "os": "Linux",
@@ -58,8 +77,23 @@
   },
   "orgProfileVerification": {
     "status": "PASS",
-    "revision": "b33f61fcacd12a5a25108d2ec1b71b6392739c1a",
+    "revision": "76a114b8a7c1194f294ee89839fcfc9ee51f5f3f",
+    "date": "2026-10-06",
     "renderedLocales": ["en", "vi"],
-    "url": "https://github.com/VINASIG"
+    "url": "https://github.com/VINASIG",
+    "vietnameseUrl": "https://github.com/VINASIG/.github/blob/main/profile/README.vi.md",
+    "method": "Inspected both actual rendered profiles. The unique project row follows the Data and libraries or Dữ liệu và thư viện heading and links to the canonical public repository."
+  },
+  "websiteVerification": {
+    "status": "PASS",
+    "revision": "a59c748b185cefff05423fa8a8a2e491ff907050",
+    "date": "2026-10-06",
+    "run": "https://github.com/VINASIG/vinasig/actions/runs/37439780398",
+    "requiredMatrix": "Chromium, Firefox and WebKit on Linux and Windows. All six verification jobs and the subsequent Pages deployment passed.",
+    "urls": [
+      "https://vinasig.io.vn/#data-and-libraries",
+      "https://vinasig.io.vn/vi/#data-and-libraries"
+    ],
+    "method": "Inspected eight actual public locale/theme/viewport states at 320 and 1440 px, with enlarged 320 px text. The localized Data and libraries section follows four foundations and contains the unique project row. No horizontal overflow. Canonical and language match. Clicking its native link opens the actual public repository. Deployed screenshots in both locales and themes were opened."
   }
 }

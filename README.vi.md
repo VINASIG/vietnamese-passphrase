@@ -6,6 +6,8 @@ Bộ wordlist tiếng Việt có nguồn gốc từng mục, quy trình xây d�
 
 Phiên bản 0.1.0 là **bản nghiên cứu thử nghiệm**. Kiểm tra cấu trúc và các phép thử chương trình đã được xây dựng. Dự án chưa có thẩm định ngôn ngữ độc lập, nghiên cứu khả năng ghi nhớ với người dùng Việt hay kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39.
 
+[Bản phát hành v0.1.0](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0) có gói tích hợp, các bản chụp nguồn dữ liệu gốc và checksum SHA-256. [Hồ sơ phát hành](docs/publication-plan.json) ghi revision mã nguồn, kết quả kiểm tra file tải lại và thông tin công khai trên các trang liên quan.
+
 | Danh sách                           | Số mục | Bit mỗi lượt lấy mẫu đều | Số lượt để đạt ít nhất 80 bit | Độ dài trung bình có dấu nối |
 | ----------------------------------- | -----: | -----------------------: | ----------------------------: | ---------------------------: |
 | [vi](data/lists/vi.txt)             |  3.057 |                  11,5779 |                             7 |              48,29 codepoint |

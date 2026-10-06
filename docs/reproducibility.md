@@ -4,7 +4,7 @@ The project offers two distinct reproduction levels. Portable input evidence mak
 
 ## Offline data rebuild
 
-Use Python 3.12.14. There are no pipeline runtime dependencies.
+Python 3.12.14 is the reference runtime for the original snapshot reduction. Offline list rebuilding is also verified with Python 3.14.8 in Windows CI. Both must reproduce the same recorded bytes. There are no pipeline runtime dependencies.
 
 ```sh
 python scripts/build_data.py --out output/rebuilt
@@ -27,7 +27,7 @@ python scripts/acquire_sources.py --dest output/upstream --scope production
 python scripts/prepare_sources.py --upstream output/upstream --out output/portable
 ```
 
-Compare the four resulting portable files and their manifest against `data/inputs/`. If a live source changed, use the preserved source-snapshot archive for this revision or explicitly review a new data version. The local delivery includes a source-snapshot archive with the four original inputs, their notices, source lock and applicable licenses. It is a reproduction artifact, not a runtime dependency.
+Compare the four resulting portable files and their manifest against `data/inputs/`. If a live source changed, use the preserved source-snapshot archive for this revision or explicitly review a new data version. The [v0.1.0 release](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0) includes a source-snapshot archive with the four original inputs, their notices, source lock and applicable licenses. It is a reproduction artifact, not a runtime dependency. The archive opens under `vietnamese-passphrase-sources-2026-10-06.1/`. Its `upstream/` directory is the input to `prepare_sources.py`. Use Python 3.12.14 for this original-source reduction, then compare all portable file and manifest hashes. Verify the release checksums before extraction.
 
 To reproduce all baseline comparisons, including the partial EFF translation experiment, acquire benchmark inputs as well.
 

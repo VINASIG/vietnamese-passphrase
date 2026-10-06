@@ -6,6 +6,8 @@ Vietnamese passphrase wordlists with source evidence, reproducible selection and
 
 Version 0.1.0 is a **research preview**. Structural checks and implementation tests are available. Independent linguistic review, a Vietnamese memorability study and an independent security audit have not been performed. The project does not claim to be the most memorable wordlist or a wallet recovery format.
 
+The [v0.1.0 prerelease](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0) supplies a local integration package, preserved original production inputs and SHA-256 checksums. The [publication record](docs/publication-plan.json) identifies the source revision, downloaded asset verification and related public listings.
+
 ## Wordlists
 
 Sizes result from documented source and filtering decisions. They are not quotas imposed by Diceware or BIP-39.
