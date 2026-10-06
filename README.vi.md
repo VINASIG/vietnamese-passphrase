@@ -8,6 +8,8 @@ Bộ từ vựng passphrase tiếng Việt thử nghiệm có quyết định c�
 
 **[v0.2.4](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.4)** là bản nghiên cứu thử nghiệm hiện hành do agent đánh giá. [Metadata phát hành](release.json) ghi tag, file notes và kênh thử nghiệm cụ thể. Chưa có bản ổn định và chưa có profile mặc định tốt nhất cho mọi người. Endpoint latest của GitHub không chọn prerelease, nên dùng liên kết phiên bản cụ thể ở trên.
 
+[Hồ sơ giao nhận](docs/publication-v0.2.4.json) ghi commit nguồn, notes đúng phiên bản, byte tải lại, attestation và nội dung trang công khai đã kiểm tra. [Kết quả xác minh](docs/verification-v0.2.4.md) tách các phép kiểm tra này khỏi bằng chứng về chất lượng từ vựng.
+
 Theo quy tắc của chủ dự án, SI agents thực hiện công việc và đánh giá. Một agent đã sàng lọc ở mức đầu mục. Chưa có dữ liệu người Việt về khả năng ghi nhớ, mức quen thuộc hay lỗi nhập, chưa có thẩm định ngôn ngữ hoặc kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39. Dự án chưa tuyên bố chuẩn passphrase tiếng Việt hoặc vocabulary tốt nhất.
 
 Đọc [kết quả phản biện](docs/adversarial-review.md), [phạm vi bảo đảm](docs/assurance.md), [cách giới thiệu phiên bản và profile](docs/publication-semantics.md) và [hướng dẫn phân phối lại](docs/downstream.md). [Lộ trình nghiên cứu](docs/research-roadmap.md) phân biệt phần có thể kiểm tra thêm bằng tự động với phần cần quan sát người Việt thật. Báo cáo lỗ hổng qua kênh riêng được ghi trong [SECURITY.md](SECURITY.md).

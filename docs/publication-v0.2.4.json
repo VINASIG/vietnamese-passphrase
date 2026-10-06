@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "version": "0.2.4",
+  "status": "prerelease",
+  "sourceCommit": "5186565b1a06e83e771777cdf33cb36a76cf67b9",
+  "release": "https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.4",
+  "releaseWorkflowRun": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37454436087",
+  "releaseSourceCI": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37454436092",
+  "mainSourceCI": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37454021226",
+  "notesSha256": "3509b0894188ceaf18ba92347bf5a8eac46f393ddb0440e478860543c40b046b",
+  "releaseName": "Vietnamese Passphrase 0.2.4 agent-assessed research preview",
+  "deliveredNotesMatch": "PASS",
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 274,
+      "sha256": "bd2404a137bb5fb4402aab5b85f6b29d2ea6845815990cb0f27d98dc30429e45",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    },
+    {
+      "name": "build-record.json",
+      "bytes": 605,
+      "sha256": "0e4dc5979d069cd0a7158f7e86d37e51ec97275da0d3640dd069bf1673c0b0aa",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    },
+    {
+      "name": "source-v0.2.4.zip",
+      "bytes": 44204681,
+      "sha256": "1dabaab5180964143052e3877c9c72d490ba67b5a3c38625bce5e1e2e10dc2d8",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    },
+    {
+      "name": "vinasig-vietnamese-passphrase-0.2.4.zip",
+      "bytes": 43963788,
+      "sha256": "ccbbed04463529e9683974e62ab3008da7ecbdfc6c4437c6efe0eb70ff04a62f",
+      "downloadedByteComparison": "PASS",
+      "attestationVerification": "PASS"
+    }
+  ],
+  "verificationPolicy": {
+    "repo": "VINASIG/vietnamese-passphrase",
+    "signerWorkflow": "VINASIG/vietnamese-passphrase/.github/workflows/release.yml",
+    "sourceDigest": "5186565b1a06e83e771777cdf33cb36a76cf67b9",
+    "sourceRef": "refs/tags/v0.2.4",
+    "denySelfHostedRunners": true
+  },
+  "fourFileCrossEnvironmentByteComparison": "PASS",
+  "buildEnvironments": ["Linux Python 3.12.14", "Windows Python 3.14.8"],
+  "privateVulnerabilityReporting": true,
+  "integrationInspection": {
+    "extractor": "PowerShell Expand-Archive (.NET)",
+    "profilesExercised": 8,
+    "generationBlocked": ["diagnostic-short-v1", "control-paired-native"],
+    "sourceAndPolicyBytes": "PASS"
+  },
+  "publicEntryPoint": {
+    "defaultBranch": "main",
+    "renderedLocales": ["en", "vi"],
+    "firstTable": "current experimental profiles",
+    "securityPolicyRendered": true,
+    "scope": "Actual rendered Markdown content; GitHub styling was not assessed"
+  },
+  "historicalDeliveryDigests": "v0.1.0 and v0.2.3 unchanged according to release API readback",
+  "assuranceBoundary": "Agent assessment, implementation and artifact origin only; no human recall or entry study or independent security audit"
+}

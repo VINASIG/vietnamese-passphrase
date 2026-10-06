@@ -8,6 +8,8 @@ Experimental Vietnamese passphrase vocabularies with attributable SI-agent decis
 
 **[v0.2.4](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.4)** is the current agent-assessed research preview. [Release identity](release.json) pins the exact notes and preview channel. There is no stable release and no recommended universal profile. GitHub's stable latest-release endpoint does not select prereleases, so use this explicit version rather than a latest URL.
 
+[Delivered artifact evidence](docs/publication-v0.2.4.json) records the exact source, matching release notes, downloaded bytes, build-origin attestations and current public entrypoint checks. [Verification observations](docs/verification-v0.2.4.md) keep those results separate from vocabulary evidence.
+
 The owner requires SI-agent execution and assessment. One agent screened headwords. Human linguistic validation, Vietnamese recall and entry performance, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
 
 Read the [methodology findings](docs/adversarial-review.md), [assurance boundary](docs/assurance.md), [publication semantics](docs/publication-semantics.md) and [downstream guide](docs/downstream.md). The [research roadmap](docs/research-roadmap.md) separates further automated research from claims requiring actual Vietnamese participants. Report vulnerabilities privately through [SECURITY.md](SECURITY.md).
