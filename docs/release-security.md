@@ -2,7 +2,7 @@
 
 v0.1.0 used locally built archives and download/hash verification. Its tag and assets are immutable. No historical CI attestation is claimed.
 
-The v0.2 release workflow builds on Linux/Python 3.12.14 and Windows/Python 3.14.8 from the same committed Git bytes. This avoids checkout CRLF changes entering package inputs. Both environments run integrity, generator, independent data, vocabulary-oracle and deterministic research checks. The release builder uses sorted USTAR entries, fixed times, ownership and modes, and gzip without a filename or timestamp. Publication fails unless all four distribution files match across environments. Byte equality is observed for the tested environment pair; arbitrary future compressors or toolchain versions are not assumed identical.
+The v0.2 release workflow builds on Linux/Python 3.12.14 and Windows/Python 3.14.8 from the same committed Git bytes. This avoids checkout CRLF changes entering package inputs. Both environments run integrity, generator, independent data, vocabulary-oracle and deterministic research checks. The release builder uses sorted USTAR entries, fixed times, ownership and modes, and gzip without a filename or timestamp at compression level zero. The uncompressed gzip stream avoids dependence on adaptive compressor output, at the cost of larger downloads. Plain wordlists remain separately reusable. Publication fails unless all four distribution files match across environments. Byte equality is observed for the tested environment pair; arbitrary future compressors or toolchain versions are not assumed identical.
 
 The source archive includes the complete tracked repository, portable baseline evidence and the pinned external snapshot. The integration package includes executable source, scripts, tests, data, experimental profiles and notices. The historical original-source archive remains available with v0.1.0; raw original production inputs are not silently claimed to be in the new portable source archive.
 
@@ -11,12 +11,12 @@ The publisher has OIDC and attestation permissions only after both builds succee
 Download the selected release and verify each asset against the exact repository, workflow, source digest and tag reference you intend to trust. For example, substitute the release's reviewed source commit for SOURCE_COMMIT:
 
 ```sh
-gh release download v0.2.1 --repo VINASIG/vietnamese-passphrase
-gh attestation verify vinasig-vietnamese-passphrase-0.2.1.tgz \
+gh release download v0.2.2 --repo VINASIG/vietnamese-passphrase
+gh attestation verify vinasig-vietnamese-passphrase-0.2.2.tgz \
   --repo VINASIG/vietnamese-passphrase \
   --signer-workflow VINASIG/vietnamese-passphrase/.github/workflows/release.yml \
   --source-digest SOURCE_COMMIT \
-  --source-ref refs/tags/v0.2.1 \
+  --source-ref refs/tags/v0.2.2 \
   --deny-self-hosted-runners
 ```
 

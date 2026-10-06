@@ -19,7 +19,7 @@ def archive(path: pathlib.Path, files: dict[str, tuple[bytes, int]]) -> None:
     with (
         path.open("wb") as output,
         gzip.GzipFile(
-            filename="", mode="wb", fileobj=output, mtime=0, compresslevel=9
+            filename="", mode="wb", fileobj=output, mtime=0, compresslevel=0
         ) as compressed,
     ):
         with tarfile.open(fileobj=compressed, mode="w", format=tarfile.USTAR_FORMAT) as tar:
@@ -107,7 +107,7 @@ def build(destination: pathlib.Path) -> None:
         "sourceCommit": revision,
         "packageVersion": version,
         "sha256": hashes,
-        "archive": "sorted USTAR, zero times and ownership, fixed modes, gzip mtime zero",
+        "archive": "sorted USTAR, zero times and ownership, fixed modes, gzip mtime zero and compression level zero",
         "assurance": "build origin and byte reproducibility; not vocabulary or independent audit approval",
     }
     record_path = destination / "build-record.json"
