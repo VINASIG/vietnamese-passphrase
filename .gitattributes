@@ -1,5 +1,5 @@
 * text=auto eol=lf
-research/inputs/** -text
+research/inputs/** -text whitespace=-blank-at-eof
 research/experimental/** -text
 *.gz binary
 *.bz2 binary

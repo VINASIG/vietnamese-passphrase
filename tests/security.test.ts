@@ -269,6 +269,7 @@ await test("CLI validates explicit generation and reports no secret on errors", 
     spawnSync(process.execPath, [cli, ...args], { encoding: "utf8" });
   for (const args of [
     ["generate"],
+    ["generate", "--bits", "80"],
     ["generate", "--bits", "80", "--words", "7"],
     ["generate", "--bits", "Infinity"],
     ["generate", "--profile", "../../invalid", "--bits", "80"],
