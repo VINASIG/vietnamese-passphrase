@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "noRecommendedDefault": true,
+  "profiles": {
+    "experimental-agent-vi": {
+      "dataProfile": "vi-display",
+      "status": "experimental-single-agent-headword-assessment",
+      "purpose": "Context-screened native vocabulary candidate",
+      "generation": true,
+      "limitation": "One agent screened headwords, not all senses or combinations. Human familiarity, recall and entry performance are unmeasured."
+    },
+    "experimental-agent-vi-fused": {
+      "dataProfile": "vi-fused",
+      "status": "experimental-single-agent-headword-assessment",
+      "purpose": "Native boundary-removal experiment",
+      "generation": true,
+      "limitation": "Internal syllable boundaries are hidden. Shorter representation does not establish easier recall."
+    },
+    "experimental-agent-ascii": {
+      "dataProfile": "vi-ascii-display",
+      "status": "experimental-single-agent-headword-assessment",
+      "purpose": "Deduplicated ASCII representation experiment",
+      "generation": true,
+      "limitation": "Uniform selection does not repair lost Vietnamese semantic distinctions. Human usability is unmeasured."
+    },
+    "experimental-agent-distance1": {
+      "dataProfile": "vi-distinct",
+      "status": "experimental-single-agent-headword-assessment",
+      "purpose": "Distance-one constraint experiment",
+      "generation": true,
+      "limitation": "No NFC codepoint distance-one neighbors in this exact list. Other similarities remain. This does not establish fewer human errors."
+    },
+    "control-paired-native": {
+      "dataProfile": "vi-ascii-native",
+      "status": "experimental-representation-control",
+      "purpose": "Matched-index native control for ASCII comparisons",
+      "generation": false,
+      "limitation": "Comparison control only. Representatives were chosen by codepoint order, not familiarity. CLI generation is disabled."
+    },
+    "historical-vi-v1": {
+      "dataProfile": "vi",
+      "status": "historical-heuristic-baseline",
+      "purpose": "Immutable v0.1 native research baseline",
+      "generation": true,
+      "limitation": "Superseded selection methodology. Retained for reproducible comparisons, not recommended for deployment."
+    },
+    "historical-ascii-v1": {
+      "dataProfile": "vi-ascii",
+      "status": "historical-heuristic-baseline",
+      "purpose": "Immutable v0.1 ASCII research baseline",
+      "generation": true,
+      "limitation": "Superseded selection methodology and lossy accent folding. Retained for reproducible comparisons, not recommended for deployment."
+    },
+    "diagnostic-short-v1": {
+      "dataProfile": "vi-short",
+      "status": "diagnostic-only-high-confusability",
+      "purpose": "Retired short-list diagnostic baseline",
+      "generation": false,
+      "limitation": "About 96% of tokens have a codepoint distance-one neighbor. This is a structural count, not a human error rate. CLI generation is disabled."
+    }
+  }
+}

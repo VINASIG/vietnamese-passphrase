@@ -1,44 +1,33 @@
 # Vietnamese Passphrase
 
-Vietnamese passphrase wordlists with source evidence, reproducible selection and a reference generator. Reuse the plain UTF-8 lists, inspect every inclusion and exclusion, or integrate the dependency-free TypeScript library.
+Experimental Vietnamese passphrase vocabularies with attributable SI-agent decisions, independent diagnostics and a uniform reference generator. Reuse the UTF-8 lists and evidence, or integrate the dependency-free TypeScript library.
 
 [Đọc bằng tiếng Việt](README.vi.md) · [Research and comparisons](docs/research.md) · [Security model](docs/security.md) · [Data specification](docs/specification.md)
 
-Version 0.2.3 is an **agent-assessed research preview**. The owner requires SI-agent execution and assessment. Human linguistic validation, a Vietnamese memorability study, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
+## Current research preview
 
-The [v0.2.3 prerelease](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.3) includes independently rebuilt ZIP distributions and verified build-origin attestations. [Delivery evidence](docs/publication-v0.2.json) records exact hashes and verification policy.
+**[v0.2.4](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.2.4)** is the current agent-assessed research preview. [Release identity](release.json) pins the exact notes and preview channel. There is no stable release and no recommended universal profile. GitHub's stable latest-release endpoint does not select prereleases, so use this explicit version rather than a latest URL.
 
-Read the [adversarial findings and methodology changes](docs/adversarial-review.md), [assurance boundary](docs/assurance.md) and [downstream redistribution guide](docs/downstream.md). The three v0.1 lists below are immutable historical baselines; their sizes are heuristic outputs rather than proven optima. The [v0.2 release procedure](docs/release-security.md) compares distribution bytes across environments and verifies build-origin attestations separately from vocabulary quality.
+The owner requires SI-agent execution and assessment. One agent screened headwords. Human linguistic validation, Vietnamese recall and entry performance, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
 
-The [v0.1.0 prerelease](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0) supplies a local integration package, preserved original production inputs and SHA-256 checksums. The [publication record](docs/publication-plan.json) identifies the source revision, downloaded asset verification and related public listings.
+Read the [methodology findings](docs/adversarial-review.md), [assurance boundary](docs/assurance.md), [publication semantics](docs/publication-semantics.md) and [downstream guide](docs/downstream.md). The [research roadmap](docs/research-roadmap.md) separates further automated research from claims requiring actual Vietnamese participants. Report vulnerabilities privately through [SECURITY.md](SECURITY.md).
 
-## Wordlists
+## Current experimental catalog
 
-Sizes result from documented source and filtering decisions. They are not quotas imposed by Diceware or BIP-39.
+Names identify evidence and intended usage. Transformation-only data IDs remain immutable inside the [experimental data revision](research/experimental/2026-10-06.agent-1/), with digests, decisions and full comparisons. They are deprecated CLI aliases, not recommendations. No profile below has measured human memorability or entry performance.
 
-| Profile                             | Entries | Bits per independent uniform draw | Draws for at least 80 bits | Expected codepoints with `-` |
-| ----------------------------------- | ------: | --------------------------------: | -------------------------: | ---------------------------: |
-| [vi](data/lists/vi.txt)             |   3,057 |                              11.6 |                          7 |                         48.3 |
-| [vi-ascii](data/lists/vi-ascii.txt) |   2,464 |                              11.3 |                          8 |                         60.4 |
-| [vi-short](data/lists/vi-short.txt) |   1,293 |                              10.3 |                          8 |                         34.7 |
+| Canonical profile              | Entries | Experiment and limitation                                                                             |
+| ------------------------------ | ------: | ----------------------------------------------------------------------------------------------------- |
+| `experimental-agent-vi`        |   2,966 | Agent context-screened native candidate. Headword screening does not cover all senses or combinations |
+| `experimental-agent-vi-fused`  |   2,966 | Removes internal underscores before sampling. Saves characters but hides syllable boundaries          |
+| `experimental-agent-ascii`     |   2,389 | Uniform distinct folded strings. Semantic distinctions remain lost                                    |
+| `experimental-agent-distance1` |   2,045 | Greedy distance-one constrained subset. Longer phrases and other similarities remain                  |
 
-`vi` keeps Vietnamese spelling and includes dictionary-attested words of one or two syllables. `vi-ascii` merges collisions **before** uniform sampling for systems that do not handle Vietnamese reliably. `vi-short` is a shorter single-syllable alternative. Expected length is not a maximum and is not evidence of easier memorization. An 80-bit target is an example, not a universal recommendation.
+`control-paired-native` has 2,389 native representatives matched to ASCII indices. It is a comparison control, with CLI generation disabled. Historical baseline names begin with `historical-`. The retired `diagnostic-short-v1` has about 96% distance-one neighborhood involvement and cannot generate through the current CLI or Python example. Its data remains available only as a diagnostic/reproduction artifact. See [historical and diagnostic baselines](docs/historical-baselines.md).
 
-Internal syllable spaces become `_`, so `bánh mì` is encoded as `bánh_mì`. The outer separator is different, for example `-`. Preserve both. Removing separators, stripping accents after sampling, choosing favorite words or reordering the result changes the security assumptions.
+The [machine-readable catalog](research/profile-catalog.json) records evidence, purpose and generation policy for all eight profiles. Renaming does not change data bytes or entropy. The generic library accepts caller-supplied vocabularies and does not enforce the CLI policy. Downstream applications must choose and enforce their own evidence and usage requirements.
 
-## Experimental contextual profiles
-
-The [separate experimental revision](research/experimental/2026-10-06.agent-1/) adds five alternatives, with digests, full diagnostics, agent decisions and ASCII/native index pairs. No profile is a recommended universal default.
-
-| Profile            | Entries | Purpose and tradeoff                                                                                                     |
-| ------------------ | ------: | ------------------------------------------------------------------------------------------------------------------------ |
-| `vi-display`       |   2,966 | Agent headword context screening and seven explicit variant consolidations; unflagged does not mean harmless             |
-| `vi-fused`         |   2,966 | Same native vocabulary with internal underscores removed before sampling; saves characters but hides syllable boundaries |
-| `vi-ascii-display` |   2,389 | Distinct folded strings sampled uniformly; meaning loss remains                                                          |
-| `vi-ascii-native`  |   2,389 | Native representatives paired with identical ASCII indices for representation comparisons                                |
-| `vi-distinct`      |   2,045 | Greedy subset with no NFC distance-one neighbors; longer phrases and other similarity risks remain                       |
-
-The native baseline has 43.4% of tokens with a distance-one neighbor; the short baseline has 96.0%. These are structural counts, not human mistake rates. A pinned external news corpus attests 60.4% of native baseline tokens; it is not a familiarity score. See [independent diagnostics](docs/research/adversarial/) and [policy decisions](research/content-policy.json).
+An internal syllable space is encoded as `_` except in the explicit fused experiment. Preserve the chosen profile's tokens and supported outer separator. Stripping accents after sampling, dropping delimiters, choosing favorite words or reordering output changes the assumptions. Source and filtering decisions determine list sizes, not a quota imposed by Diceware or BIP-39. See [independent diagnostics](docs/research/adversarial/) and [policy decisions](research/content-policy.json).
 
 ## Run locally
 
@@ -50,9 +39,10 @@ cd vietnamese-passphrase
 npm ci --ignore-scripts
 npm run build
 node dist/cli.js verify
-node dist/cli.js info --profile vi
-node dist/cli.js generate --profile vi --bits 80
-node dist/cli.js generate --profile vi-ascii --words 8 --json
+node dist/cli.js profiles
+node dist/cli.js info --profile experimental-agent-vi
+node dist/cli.js generate --profile experimental-agent-vi --bits 80
+node dist/cli.js generate --profile experimental-agent-ascii --words 8 --json
 ```
 
 The final two commands print a newly generated secret to standard output. The library does not upload it, persist it or copy it to a clipboard. Terminal history, process capture and your surrounding application are outside that property. Never use the public examples or test vectors as real passwords.
@@ -63,11 +53,13 @@ The final two commands print a newly generated secret to standard output. The li
 import { readFile } from "node:fs/promises";
 import { generate, planPhrase, verifyWordlist } from "./dist/index.js";
 
-const bytes = await readFile("data/lists/vi.txt");
+const bytes = await readFile(
+  "research/experimental/2026-10-06.agent-1/vi-display.txt",
+);
 // Pin a reviewed list digest in your application.
 const list = await verifyWordlist(
   bytes,
-  "a7a8f17ddfffebbd3a15003e6f67fe360f5301814914753503735844b0b90240",
+  "a027da36027ead2da0e80133b3bce6edca28fef01fae867551647767cf79331e",
 );
 const plan = planPhrase(list, { bits: 80 });
 const result = generate(list, { bits: 80 });
@@ -79,19 +71,17 @@ The same ES module uses Web Crypto in modern browsers. Serve your own reviewed c
 Call `planPhrase` to inspect entropy and worst-case length before requesting randomness. `generate` and `fromDice` accept `maxCodepoints` and `maxUtf8Bytes`. These limits apply to the entire possible output space. A configuration that could exceed a limit fails before sampling. It never retries until a shorter phrase appears.
 
 ```ts
-const result = generate(shortList, {
+const result = generate(list, {
   bits: 80,
   maxCodepoints: 64,
 });
 ```
 
-Select the vocabulary profile and the bit target or word count explicitly. CLI generation has no implicit profile in v0.2.3. The number of draws is `ceil(target / log2(N))`. Repeats are allowed. Deterministic separators and underscores contribute zero entropy. See [the specification](docs/specification.md) for API contracts and [Python reuse](examples/generate.py) for a separate standard-library example.
+Select the vocabulary profile and the bit target or word count explicitly. CLI info and generation have no implicit profile. Generation prints evidence limitations to standard error. The number of draws is `ceil(target / log2(N))`. Repeats are allowed. Deterministic separators and underscores contribute zero entropy. See [the specification](docs/specification.md) for API contracts and [Python reuse](examples/generate.py) for a separate standard-library example using the same catalog policy.
 
 ## Use physical dice
 
-The [dice tables](data/dice/) cover every possible group, including rejected groups. For `vi`, roll five fair six-sided dice in order and look up the five digits. If the row says `REJECT`, discard that entire group and roll five new dice. Otherwise record the full token. Repeat for the desired number of accepted draws. Join tokens with a supported outer separator.
-
-For `vi-ascii`, use five dice per group. For `vi-short`, use four. Each accepted token has the same number of corresponding dice groups. Non-power-of-six list sizes are supported without cutting off words. Fair independent dice are an assumption. The library exposes `planDice`, `diceIndex` and `fromDice` for checking this mapping.
+The library exposes `planDice`, `diceIndex` and `fromDice` for an explicitly reviewed list. Non-power-of-six sizes are supported without cutting off words. Reject an entire rejected dice group and retry. Each accepted token receives the same number of groups, assuming fair independent dice. The checked-in [v0.1 dice tables](data/dice/) are historical reproduction data, including the retired diagnostic list, and are not the current quick start.
 
 ## Reproduce and inspect
 
@@ -103,12 +93,16 @@ python tests/vocabulary_test.py
 python scripts/vocabulary_audit.py
 python scripts/experiment_profiles.py
 python scripts/compare_methodology.py
+python tests/publication_test.py
+python scripts/release_metadata.py
 npm run verify
 ```
 
 Python 3.12.14 runs the data pipeline with only the standard library. Portable evidence is included in [data/inputs](data/inputs/). The [source lock](data/source-lock.json) records upstream hashes, revisions, licenses and attribution. [Selected-word provenance](data/provenance.jsonl) includes dictionary labels, syllable frequency estimates and public sentence IDs. [The complete decision ledger](data/audit/decisions.jsonl) explains all 66,145 candidate records. Reasons overlap and must not be added as mutually exclusive counts.
 
 [Reproduction instructions](docs/reproducibility.md) distinguish rebuilding from the included portable evidence, verifying its reduction from original snapshots, and rerunning benchmarks. [Contribution rules](CONTRIBUTING.md) require traceable evidence and scoped agent assessment.
+
+The [release procedure](docs/release-security.md) checks exact-tag notes, independently rebuilt distribution bytes and build-origin attestations. Historical [v0.2.3 delivery evidence](docs/publication-v0.2.json) and [v0.1 originals](docs/historical-baselines.md) retain their original scope. Neither an archive signature nor a renamed profile establishes vocabulary quality.
 
 ## Licensing
 

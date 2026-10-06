@@ -16,3 +16,5 @@ The owner requires SI-agent execution and assessment. Evidence must name its lay
 Corpus attestation, model annotations and computed neighbors retain their names. A modeled measure is not a human observation. Passing an invariant does not prove the right UX objective. A signed release cannot change linguistic or user-evidence statuses.
 
 Machine entropy remains precise for calculations. Human descriptions round it and state assumptions. No universal bit target or best vocabulary is asserted. User modification changes the model; downstream integrations must enforce actual constraints independently.
+
+The [catalog](../research/profile-catalog.json) names evidence and intended usage. A diagnostic profile can pass byte integrity while being unavailable for CLI generation. The generic library accepts caller-supplied vocabularies and does not enforce the catalog. [Further automated research and necessary human observations](research-roadmap.md) retain separate outcome definitions. [SECURITY.md](../SECURITY.md) supplies the disclosure policy, not a completed security review.

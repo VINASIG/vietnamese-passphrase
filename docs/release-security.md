@@ -1,5 +1,7 @@
 # Release origin and reproducibility
 
+The current release identity is in [release.json](../release.json). A future v0.2.x tag must match the package version, both lockfile version entries, exact-tag notes path and heading, and the research-preview channel. Missing or stale notes fail without a fallback. The release builder includes the exact notes hash and tag in its build record. The publish job checks identity again against the delivered archive names, source commit and checksum manifest before attestation. Release titles name the version and evidence channel, and latest is explicitly false. The [negative publication tests](../tests/publication_test.py) exercise a future v0.2.5 fixture and stale, missing, mismatched and corrupt inputs. Read [publication semantics](publication-semantics.md) for the default entrypoint and profile roles.
+
 v0.1.0 used locally built archives and download/hash verification. Its tag and assets are immutable. No historical CI attestation is claimed.
 
 The v0.2 release workflow builds on Linux/Python 3.12.14 and Windows/Python 3.14.8 from the same committed Git bytes. This avoids checkout CRLF changes entering package inputs. Both environments run integrity, generator, independent data, vocabulary-oracle and deterministic research checks. The release builder uses the standard library ZIP_STORED format with sorted entries, a fixed DOS date of 1980-01-01, fixed Unix file modes and no extra fields. No deflate compressor participates in these output archives. This costs larger downloads. Plain wordlists remain separately reusable. Publication fails unless all four distribution files match across environments. Byte equality is observed for the tested environment pair; arbitrary future compressors or toolchain versions are not assumed identical.
@@ -11,12 +13,12 @@ The publisher has OIDC and attestation permissions only after both builds succee
 Download the selected release and verify each asset against the exact repository, workflow, source digest and tag reference you intend to trust. For example, substitute the release's reviewed source commit for SOURCE_COMMIT:
 
 ```sh
-gh release download v0.2.3 --repo VINASIG/vietnamese-passphrase
-gh attestation verify vinasig-vietnamese-passphrase-0.2.3.zip \
+gh release download v0.2.4 --repo VINASIG/vietnamese-passphrase
+gh attestation verify vinasig-vietnamese-passphrase-0.2.4.zip \
   --repo VINASIG/vietnamese-passphrase \
   --signer-workflow VINASIG/vietnamese-passphrase/.github/workflows/release.yml \
   --source-digest SOURCE_COMMIT \
-  --source-ref refs/tags/v0.2.3 \
+  --source-ref refs/tags/v0.2.4 \
   --deny-self-hosted-runners
 ```
 

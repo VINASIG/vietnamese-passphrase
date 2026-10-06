@@ -1,6 +1,6 @@
 {
   "name": "@vinasig/vietnamese-passphrase",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Agent-assessed Vietnamese passphrase research, wordlists and uniform reference generation",
   "type": "module",
   "license": "LGPL-3.0-or-later",
@@ -37,6 +37,8 @@
     "docs",
     "licenses",
     "NOTICE.md",
+    "SECURITY.md",
+    "release.json",
     "LICENSE",
     "LICENSES.md",
     "BRAND_POLICY.md",

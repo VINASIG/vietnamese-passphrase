@@ -3,51 +3,15 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { generate, verifyWordlist } from "./index.ts";
 import type { PhraseOptions } from "./index.ts";
-
-const profiles = [
-  "vi",
-  "vi-ascii",
-  "vi-short",
-  "vi-display",
-  "vi-fused",
-  "vi-ascii-display",
-  "vi-ascii-native",
-  "vi-distinct",
-] as const;
-type Profile = (typeof profiles)[number];
-const base = new URL("../data/", import.meta.url);
-const experimental = new URL(
-  "../research/experimental/2026-10-06.agent-1/",
-  import.meta.url,
-);
+import { location, readProfiles, record } from "./profiles.ts";
+import type { Profile } from "./profiles.ts";
 const entropyScope =
   "independent uniform draws from pinned unique tokens with injective encoding; not measured memorability or downstream security";
-
-function location(profile: Profile) {
-  const legacy =
-    profile === "vi" || profile === "vi-ascii" || profile === "vi-short";
-  return {
-    manifest: new URL("manifest.json", legacy ? base : experimental),
-    list: new URL(
-      (legacy ? "lists/" : "") + profile + ".txt",
-      legacy ? base : experimental,
-    ),
-    status: legacy
-      ? "historical-research-preview"
-      : "experimental-agent-assessment",
-  };
-}
-
-function record(value: unknown): Record<string, unknown> {
-  if (typeof value !== "object" || value === null || Array.isArray(value))
-    throw new Error("Invalid data manifest");
-  return value as Record<string, unknown>;
-}
 
 async function load(profile: Profile) {
   const path = location(profile);
   const metadata: unknown = JSON.parse(await readFile(path.manifest, "utf8"));
-  const spec = record(record(record(metadata).profiles)[profile]);
+  const spec = record(record(record(metadata).profiles)[profile.dataProfile]);
   if (typeof spec.sha256 !== "string")
     throw new Error("Missing wordlist checksum");
   return verifyWordlist(await readFile(path.list), spec.sha256);
@@ -57,13 +21,21 @@ async function main(): Promise<void> {
   const [command, ...args] = process.argv.slice(2);
   if (command === undefined || command === "help" || command === "--help") {
     process.stdout.write(
-      "Vietnamese Passphrase\n\nGenerate locally with an explicit profile and explicit bit target or word count\n  vietphrase generate --profile vi --bits 80\n  vietphrase generate --profile vi-fused --words 8 --json\n\nInspect the wordlist without generating a secret\n  vietphrase info --profile vi\n  vietphrase verify\n\nHistorical profiles: vi, vi-ascii, vi-short\nExperimental profiles: vi-display, vi-fused, vi-ascii-display, vi-ascii-native, vi-distinct\nNo vocabulary is a recommended universal default. Verification checks bytes and format.\nEntropy assumes independent uniform draws, not measured memorability or downstream security.\n",
+      "Vietnamese Passphrase\n\nGenerate locally with an explicit profile and explicit bit target or word count\n  vietphrase generate --profile experimental-agent-vi --bits 80\n\nInspect evidence and usage policy without generating a secret\n  vietphrase profiles\n  vietphrase info --profile experimental-agent-vi\n  vietphrase verify\n\nProfile names identify experimental, historical, control or diagnostic evidence.\ndiagnostic-short-v1 and control-paired-native are unavailable for CLI generation.\nOld data identifiers remain deprecated aliases with the same usage restrictions.\nNo vocabulary is a recommended universal default. Verification checks bytes and format.\nEntropy assumes independent uniform draws, not measured memorability or downstream security.\n",
     );
+    return;
+  }
+  const profiles = await readProfiles();
+  if (command === "profiles") {
+    if (args.length !== 0)
+      throw new Error("The profiles command takes no options");
+    process.stdout.write(JSON.stringify(profiles, null, 2) + "\n");
     return;
   }
   if (!["generate", "info", "verify"].includes(command))
     throw new Error("Unknown command. Run vietphrase help");
-  let selected: Profile = "vi";
+  let selected: Profile | undefined;
+  let requested: string | undefined;
   let bits: number | undefined;
   let words: number | undefined;
   let separator: string | undefined;
@@ -81,10 +53,13 @@ async function main(): Promise<void> {
     const value = args[++i];
     if (value === undefined) throw new Error("An option value is required");
     if (flag === "--profile") {
-      const profile = profiles.find((p) => p === value);
+      const profile = profiles.find(
+        (p) => p.id === value || p.dataProfile === value,
+      );
       if (profile === undefined)
         throw new Error("Choose a listed profile. Run vietphrase help");
       selected = profile;
+      requested = value;
     } else if (flag === "--bits" || flag === "--words") {
       if (!/^\d+(?:\.\d+)?$/.test(value))
         throw new Error("Supply a positive number");
@@ -107,24 +82,44 @@ async function main(): Promise<void> {
     for (const profile of profiles) {
       const list = await load(profile);
       process.stdout.write(
-        profile +
+        profile.id +
           " INTEGRITY_PASS " +
           String(list.size) +
-          " tokens (pinned bytes and format only)\n",
+          " tokens (pinned bytes and format only) " +
+          profile.status +
+          "\n",
       );
     }
     return;
   }
+  if (selected === undefined)
+    throw new Error(
+      "An explicit --profile is required. Run vietphrase profiles. There is no default vocabulary",
+    );
+  if (command === "generate" && !selected.generation)
+    throw new Error(
+      selected.id +
+        " is unavailable for CLI generation. " +
+        selected.limitation,
+    );
+  if (requested !== undefined && requested !== selected.id)
+    process.stderr.write(
+      "Deprecated profile alias " + requested + ". Use " + selected.id + ".\n",
+    );
   const list = await load(selected);
   if (command === "info") {
     process.stdout.write(
       JSON.stringify(
         {
-          profile: selected,
+          profile: selected.id,
+          dataProfile: selected.dataProfile,
           entries: list.size,
           bitsPerDraw: list.bitsPerDraw,
           listPath: fileURLToPath(location(selected).list),
-          status: location(selected).status,
+          status: selected.status,
+          purpose: selected.purpose,
+          cliGeneration: selected.generation,
+          limitation: selected.limitation,
           entropyScope,
           humanValidation: "not-performed; SI-agent-only project",
           independentSecurityAudit: "not-performed",
@@ -135,21 +130,20 @@ async function main(): Promise<void> {
     );
     return;
   }
-  if (!seen.has("--profile"))
-    throw new Error(
-      "Generation requires an explicit --profile; there is no recommended default vocabulary",
-    );
   const options: PhraseOptions = {
     ...(bits === undefined ? {} : { bits }),
     ...(words === undefined ? {} : { words }),
     ...(separator === undefined ? {} : { separator }),
   };
   const result = generate(list, options);
+  process.stderr.write(selected.status + ". " + selected.limitation + "\n");
   process.stdout.write(
     json
       ? JSON.stringify({
-          profile: selected,
-          status: location(selected).status,
+          profile: selected.id,
+          dataProfile: selected.dataProfile,
+          status: selected.status,
+          limitation: selected.limitation,
           entropyScope,
           ...result,
         }) + "\n"

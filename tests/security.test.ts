@@ -285,12 +285,15 @@ await test("CLI validates explicit generation and reports no secret on errors", 
   }
   const checked = run(["verify"]);
   assert.equal(checked.status, 0, checked.stderr);
-  assert.match(checked.stdout, /vi INTEGRITY_PASS 3057 tokens/);
-  assert.match(checked.stdout, /vi-fused INTEGRITY_PASS 2966 tokens/);
+  assert.match(checked.stdout, /historical-vi-v1 INTEGRITY_PASS 3057 tokens/);
+  assert.match(
+    checked.stdout,
+    /experimental-agent-vi-fused INTEGRITY_PASS 2966 tokens/,
+  );
   const generated = run([
     "generate",
     "--profile",
-    "vi",
+    "experimental-agent-vi",
     "--bits",
     "80",
     "--json",
@@ -304,7 +307,10 @@ await test("CLI validates explicit generation and reports no secret on errors", 
       typeof parsed.entropyBits === "number" &&
       parsed.entropyBits >= 80,
   );
-  assert.equal(generated.stderr, "");
+  assert.match(
+    generated.stderr,
+    /experimental-single-agent-headword-assessment/,
+  );
   assert.equal(
     execFileSync(process.execPath, [cli, "help"], {
       encoding: "utf8",

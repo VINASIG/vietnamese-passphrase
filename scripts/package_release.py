@@ -12,6 +12,8 @@ import tarfile
 import zipfile
 from typing import Any
 
+import release_metadata
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
@@ -50,14 +52,9 @@ def build(destination: pathlib.Path) -> None:
             target.write_bytes(data)
             source[member.name] = (data, 0o755 if member.mode & 0o111 else 0o644)
     package = json.loads((stage / "package.json").read_text(encoding="utf-8"))
-    version = package["version"]
-    if not isinstance(version, str) or not version.replace(".", "").isdigit():
-        raise ValueError("Unexpected release version")
-    if (
-        os.environ.get("GITHUB_REF_TYPE") == "tag"
-        and os.environ.get("GITHUB_REF_NAME") != "v" + version
-    ):
-        raise ValueError("Tag and package version differ")
+    tag = os.environ.get("GITHUB_REF_NAME") if os.environ.get("GITHUB_REF_TYPE") == "tag" else None
+    release = release_metadata.validate(stage, tag)
+    version = release.version
     npm = shutil.which("npm.cmd" if os.name == "nt" else "npm")
     if npm is None:
         raise ValueError("Pinned npm must be on PATH")
@@ -99,6 +96,8 @@ def build(destination: pathlib.Path) -> None:
         "schema": 1,
         "sourceCommit": revision,
         "packageVersion": version,
+        "releaseTag": release.tag,
+        "releaseNotesSha256": release.notes_sha256,
         "sha256": hashes,
         "archive": "sorted ZIP_STORED, fixed DOS date 1980-01-01, Unix file modes and no extra fields",
         "assurance": "build origin and byte reproducibility; not vocabulary or independent audit approval",

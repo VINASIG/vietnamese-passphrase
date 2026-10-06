@@ -38,11 +38,13 @@ jobs:
       - run: python -m pip install --require-hashes -r requirements-dev.txt
       - run: npm run verify
       - run: npm audit --audit-level=low
-      - run: python -m mypy scripts tests/data_test.py tests/vocabulary_test.py examples
-      - run: python -m ruff check scripts tests/data_test.py tests/vocabulary_test.py examples
-      - run: python -m ruff format --check scripts tests/data_test.py tests/vocabulary_test.py examples
+      - run: python scripts/release_metadata.py
+      - run: python -m mypy scripts tests examples
+      - run: python -m ruff check scripts tests examples
+      - run: python -m ruff format --check scripts tests examples
       - run: python tests/data_test.py
       - run: python tests/vocabulary_test.py
+      - run: python tests/publication_test.py
       - name: Recompute research measurements
         run: python scripts/research.py
       - name: Check deterministic research output

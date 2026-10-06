@@ -12,4 +12,4 @@ Run the commands in [reproducibility.md](docs/reproducibility.md), including str
 
 Original software contributions use LGPL-3.0-or-later. Original documentation and data contributions use CC-BY-SA-4.0 with retained upstream rights. Executable examples use the software scope. You confirm that you can contribute under these terms. No blanket transfer of copyright is requested.
 
-Use the repository's private vulnerability reporting channel if enabled. If it is unavailable, describe the issue without posting exploitable details or secrets and request a private contact through the public VINASIG directory. This document does not authorize an SI agent to contact anybody on the user's behalf.
+Report security vulnerabilities through the enabled private channel described in [SECURITY.md](SECURITY.md). Do not open public exploitable reports or include account secrets. The policy defines supported revisions, response targets and coordinated disclosure. This document does not authorize an SI agent to contact anybody on the user's behalf.

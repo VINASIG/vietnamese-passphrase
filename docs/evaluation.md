@@ -15,3 +15,5 @@ The owner requires SI-agent execution and assessment. Human recruitment and stud
 Agents may inspect meanings and simulate encoding or error scenarios. Never fabricate participants, consent, regional raters, weeks of use, recall statistics, uncertainty intervals for nonexistent observations, or an independent agent panel that did not run. Keep human-evidence uncertainty explicit while completing agent-executable work.
 
 [The adversarial report](adversarial-review.md) records outcomes. [The assurance table](assurance.md) separates their meanings and limits.
+
+[The research roadmap](research-roadmap.md) distinguishes uncertainty that additional automated evidence can reduce from familiarity, recall, entry and content-acceptance claims that require actual Vietnamese participants. The agent-only rule is an execution boundary, not a substitute for that evidence. [Publication semantics](publication-semantics.md) separates current experiments, historical baselines and diagnostic-only data.
