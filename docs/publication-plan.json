@@ -1,5 +1,5 @@
 {
-  "status": "repository-created-publication-in-progress",
+  "status": "source-and-org-profile-published-release-in-progress",
   "repository": "VINASIG/vietnamese-passphrase",
   "description": "Reproducible Vietnamese passphrase wordlists with per-word evidence and uniform reference generation. Research preview.",
   "homepage": "https://github.com/VINASIG/vietnamese-passphrase#readme",
@@ -29,10 +29,8 @@
     "VINASIG/.github English and Vietnamese shared-resource rows"
   ],
   "unperformed": [
-    "commit and push",
-    "remote CI",
     "tag and release",
-    "related public metadata updates"
+    "website inventory publication and deployment"
   ],
   "newDomain": null,
   "npmPublication": false,
@@ -42,5 +40,26 @@
     "date": "2026-10-06",
     "url": "https://github.com/VINASIG/vietnamese-passphrase",
     "method": "GitHub REST GET /repos/VINASIG/vietnamese-passphrase. Description, homepage, topics and public visibility matched."
+  },
+  "sourceVerification": {
+    "status": "PASS",
+    "revision": "f00d610e21ceea87a3ef6c7e645099701771d099",
+    "run": "https://github.com/VINASIG/vietnamese-passphrase/actions/runs/37434900505",
+    "matrix": [
+      {
+        "os": "Linux",
+        "python": "3.12.14"
+      },
+      {
+        "os": "Windows",
+        "python": "3.14.8"
+      }
+    ]
+  },
+  "orgProfileVerification": {
+    "status": "PASS",
+    "revision": "b33f61fcacd12a5a25108d2ec1b71b6392739c1a",
+    "renderedLocales": ["en", "vi"],
+    "url": "https://github.com/VINASIG"
   }
 }
