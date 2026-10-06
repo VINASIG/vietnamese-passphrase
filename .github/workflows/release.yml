@@ -78,6 +78,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: >-
           gh release create "$GITHUB_REF_NAME" --verify-tag --prerelease
-          --notes-file docs/releases/v0.2.0.md
+          --notes-file docs/releases/v0.2.1.md
           builds/ubuntu-latest/*.tgz builds/ubuntu-latest/*.tar.gz
           builds/ubuntu-latest/SHA256SUMS.txt builds/ubuntu-latest/build-record.json

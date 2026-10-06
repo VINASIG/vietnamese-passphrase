@@ -71,14 +71,18 @@ def build(destination: pathlib.Path) -> None:
     for args in [
         ["ci", "--ignore-scripts"],
         ["run", "build"],
-        ["pack", "--ignore-scripts", "--json"],
+        ["pack", "--ignore-scripts"],
     ]:
-        result = subprocess.run(
+        subprocess.run(
             [npm, *args], cwd=stage, text=True, encoding="utf-8", capture_output=True, check=True
         )
-        if args[0] == "pack":
-            info = json.loads(result.stdout)
-            packed = stage / info[0]["filename"]
+    candidates = list(stage.glob("*.tgz"))
+    expected_name = (
+        str(package["name"]).removeprefix("@").replace("/", "-") + "-" + version + ".tgz"
+    )
+    if len(candidates) != 1 or candidates[0].name != expected_name or candidates[0].is_symlink():
+        raise ValueError("npm pack did not produce the single expected artifact")
+    packed = candidates[0]
     files = {}
     with tarfile.open(packed, mode="r:gz") as tar:
         for member in tar:

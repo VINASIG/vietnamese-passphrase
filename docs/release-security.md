@@ -11,12 +11,12 @@ The publisher has OIDC and attestation permissions only after both builds succee
 Download the selected release and verify each asset against the exact repository, workflow, source digest and tag reference you intend to trust. For example, substitute the release's reviewed source commit for SOURCE_COMMIT:
 
 ```sh
-gh release download v0.2.0 --repo VINASIG/vietnamese-passphrase
-gh attestation verify vinasig-vietnamese-passphrase-0.2.0.tgz \
+gh release download v0.2.1 --repo VINASIG/vietnamese-passphrase
+gh attestation verify vinasig-vietnamese-passphrase-0.2.1.tgz \
   --repo VINASIG/vietnamese-passphrase \
   --signer-workflow VINASIG/vietnamese-passphrase/.github/workflows/release.yml \
   --source-digest SOURCE_COMMIT \
-  --source-ref refs/tags/v0.2.0 \
+  --source-ref refs/tags/v0.2.1 \
   --deny-self-hosted-runners
 ```
 

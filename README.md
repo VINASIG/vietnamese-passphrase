@@ -4,7 +4,7 @@ Vietnamese passphrase wordlists with source evidence, reproducible selection and
 
 [Đọc bằng tiếng Việt](README.vi.md) · [Research and comparisons](docs/research.md) · [Security model](docs/security.md) · [Data specification](docs/specification.md)
 
-Version 0.2.0 is an **agent-assessed research preview**. The owner requires SI-agent execution and assessment. Human linguistic validation, a Vietnamese memorability study, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
+Version 0.2.1 is an **agent-assessed research preview**. The owner requires SI-agent execution and assessment. Human linguistic validation, a Vietnamese memorability study, an independent security audit and production assurance are not established. Agent decisions and automated checks have separate scopes. This project does not claim a Vietnamese passphrase standard or a best vocabulary.
 
 Read the [adversarial findings and methodology changes](docs/adversarial-review.md), [assurance boundary](docs/assurance.md) and [downstream redistribution guide](docs/downstream.md). The three v0.1 lists below are immutable historical baselines; their sizes are heuristic outputs rather than proven optima. The [v0.2 release procedure](docs/release-security.md) compares distribution bytes across environments and verifies build-origin attestations separately from vocabulary quality.
 
@@ -83,7 +83,7 @@ const result = generate(shortList, {
 });
 ```
 
-Select the vocabulary profile and the bit target or word count explicitly. CLI generation has no implicit profile in v0.2.0. The number of draws is `ceil(target / log2(N))`. Repeats are allowed. Deterministic separators and underscores contribute zero entropy. See [the specification](docs/specification.md) for API contracts and [Python reuse](examples/generate.py) for a separate standard-library example.
+Select the vocabulary profile and the bit target or word count explicitly. CLI generation has no implicit profile in v0.2.1. The number of draws is `ceil(target / log2(N))`. Repeats are allowed. Deterministic separators and underscores contribute zero entropy. See [the specification](docs/specification.md) for API contracts and [Python reuse](examples/generate.py) for a separate standard-library example.
 
 ## Use physical dice
 
