@@ -1,4 +1,6 @@
 * text=auto eol=lf
+research/inputs/** -text
+research/experimental/** -text
 *.gz binary
 *.bz2 binary
 *.png binary

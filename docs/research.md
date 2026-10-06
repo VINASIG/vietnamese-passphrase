@@ -77,7 +77,7 @@ The lists do not guarantee unique prefixes or edit distance. Tone differences ca
 
 Frequency, dictionary agreement and short length are measurable proxies. They cannot prove recall, dialect familiarity, pronunciation, pleasantness or lack of offensive unlabelled senses. Conservative all-sense exclusions can reject familiar polysemous words. Missing labels can admit unsuitable words. Loanwords with dictionary and corpus evidence can remain. Tatoeba and wordfreq are not a representative contemporary Vietnamese user panel.
 
-[The proposed evaluation protocol](evaluation.md) calls for separate linguistic review and a consented human study with measured recall, entry errors, typing time and user ratings. It has not been executed. The defensible improvement offered today is inspectable provenance, reproducible alternatives and correct sampling/encoding contracts, not an unmeasured claim that other repositories cannot replace this one.
+[The agent evaluation protocol](evaluation.md) follows the owner's agent-only execution rule. It records structural evidence, opposing hypotheses and scoped agent decisions without claiming human observations. [The adversarial follow-up](adversarial-review.md) adds external lexical attestation, confusability diagnostics, threshold tradeoffs and experimental contextual profiles. The defensible improvement offered today is inspectable provenance, reproducible alternatives and correct sampling/encoding contracts, not an unmeasured claim that other repositories cannot replace this one.
 
 ## Licensing decision
 

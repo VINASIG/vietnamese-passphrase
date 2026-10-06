@@ -4,9 +4,39 @@ import { fileURLToPath } from "node:url";
 import { generate, verifyWordlist } from "./index.ts";
 import type { PhraseOptions } from "./index.ts";
 
-type Profile = "vi" | "vi-ascii" | "vi-short";
-const profiles: readonly Profile[] = ["vi", "vi-ascii", "vi-short"];
+const profiles = [
+  "vi",
+  "vi-ascii",
+  "vi-short",
+  "vi-display",
+  "vi-fused",
+  "vi-ascii-display",
+  "vi-ascii-native",
+  "vi-distinct",
+] as const;
+type Profile = (typeof profiles)[number];
 const base = new URL("../data/", import.meta.url);
+const experimental = new URL(
+  "../research/experimental/2026-10-06.agent-1/",
+  import.meta.url,
+);
+const entropyScope =
+  "independent uniform draws from pinned unique tokens with injective encoding; not measured memorability or downstream security";
+
+function location(profile: Profile) {
+  const legacy =
+    profile === "vi" || profile === "vi-ascii" || profile === "vi-short";
+  return {
+    manifest: new URL("manifest.json", legacy ? base : experimental),
+    list: new URL(
+      (legacy ? "lists/" : "") + profile + ".txt",
+      legacy ? base : experimental,
+    ),
+    status: legacy
+      ? "historical-research-preview"
+      : "experimental-agent-assessment",
+  };
+}
 
 function record(value: unknown): Record<string, unknown> {
   if (typeof value !== "object" || value === null || Array.isArray(value))
@@ -15,23 +45,19 @@ function record(value: unknown): Record<string, unknown> {
 }
 
 async function load(profile: Profile) {
-  const metadata: unknown = JSON.parse(
-    await readFile(new URL("manifest.json", base), "utf8"),
-  );
+  const path = location(profile);
+  const metadata: unknown = JSON.parse(await readFile(path.manifest, "utf8"));
   const spec = record(record(record(metadata).profiles)[profile]);
   if (typeof spec.sha256 !== "string")
     throw new Error("Missing wordlist checksum");
-  return verifyWordlist(
-    await readFile(new URL("lists/" + profile + ".txt", base)),
-    spec.sha256,
-  );
+  return verifyWordlist(await readFile(path.list), spec.sha256);
 }
 
 async function main(): Promise<void> {
   const [command, ...args] = process.argv.slice(2);
   if (command === undefined || command === "help" || command === "--help") {
     process.stdout.write(
-      "Vietnamese Passphrase\n\nGenerate locally with an explicit bit target or word count\n  vietphrase generate --profile vi --bits 80\n  vietphrase generate --profile vi-ascii --words 8 --json\n\nInspect the wordlist without generating a secret\n  vietphrase info --profile vi\n  vietphrase verify\n\nProfiles are vi, vi-ascii and vi-short\nData is a research preview. Entropy assumes independent uniform draws.\n",
+      "Vietnamese Passphrase\n\nGenerate locally with an explicit profile and explicit bit target or word count\n  vietphrase generate --profile vi --bits 80\n  vietphrase generate --profile vi-fused --words 8 --json\n\nInspect the wordlist without generating a secret\n  vietphrase info --profile vi\n  vietphrase verify\n\nHistorical profiles: vi, vi-ascii, vi-short\nExperimental profiles: vi-display, vi-fused, vi-ascii-display, vi-ascii-native, vi-distinct\nNo vocabulary is a recommended universal default. Verification checks bytes and format.\nEntropy assumes independent uniform draws, not measured memorability or downstream security.\n",
     );
     return;
   }
@@ -57,7 +83,7 @@ async function main(): Promise<void> {
     if (flag === "--profile") {
       const profile = profiles.find((p) => p === value);
       if (profile === undefined)
-        throw new Error("Choose vi, vi-ascii or vi-short");
+        throw new Error("Choose a listed profile. Run vietphrase help");
       selected = profile;
     } else if (flag === "--bits" || flag === "--words") {
       if (!/^\d+(?:\.\d+)?$/.test(value))
@@ -81,7 +107,10 @@ async function main(): Promise<void> {
     for (const profile of profiles) {
       const list = await load(profile);
       process.stdout.write(
-        profile + " PASS " + String(list.size) + " tokens\n",
+        profile +
+          " INTEGRITY_PASS " +
+          String(list.size) +
+          " tokens (pinned bytes and format only)\n",
       );
     }
     return;
@@ -94,8 +123,11 @@ async function main(): Promise<void> {
           profile: selected,
           entries: list.size,
           bitsPerDraw: list.bitsPerDraw,
-          listPath: fileURLToPath(new URL("lists/" + selected + ".txt", base)),
-          status: "research-preview",
+          listPath: fileURLToPath(location(selected).list),
+          status: location(selected).status,
+          entropyScope,
+          humanValidation: "not-performed; SI-agent-only project",
+          independentSecurityAudit: "not-performed",
         },
         null,
         2,
@@ -103,6 +135,10 @@ async function main(): Promise<void> {
     );
     return;
   }
+  if (!seen.has("--profile"))
+    throw new Error(
+      "Generation requires an explicit --profile; there is no recommended default vocabulary",
+    );
   const options: PhraseOptions = {
     ...(bits === undefined ? {} : { bits }),
     ...(words === undefined ? {} : { words }),
@@ -111,7 +147,12 @@ async function main(): Promise<void> {
   const result = generate(list, options);
   process.stdout.write(
     json
-      ? JSON.stringify({ profile: selected, ...result }) + "\n"
+      ? JSON.stringify({
+          profile: selected,
+          status: location(selected).status,
+          entropyScope,
+          ...result,
+        }) + "\n"
       : result.passphrase + "\n",
   );
 }

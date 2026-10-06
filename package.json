@@ -1,7 +1,7 @@
 {
   "name": "@vinasig/vietnamese-passphrase",
-  "version": "0.1.0",
-  "description": "Auditable Vietnamese passphrase wordlists and a uniform random reference generator",
+  "version": "0.2.0",
+  "description": "Agent-assessed Vietnamese passphrase research, wordlists and uniform reference generation",
   "type": "module",
   "license": "LGPL-3.0-or-later",
   "private": true,
@@ -30,11 +30,10 @@
   "files": [
     "dist",
     "src",
-    "data/lists",
-    "data/dice",
-    "data/manifest.json",
-    "data/provenance.jsonl",
-    "data/checksums.json",
+    "scripts",
+    "tests",
+    "data",
+    "research",
     "docs",
     "licenses",
     "NOTICE.md",
@@ -42,7 +41,10 @@
     "LICENSES.md",
     "BRAND_POLICY.md",
     "tsconfig.json",
-    "package-lock.json"
+    "package-lock.json",
+    "pyproject.toml",
+    "requirements-dev.txt",
+    "examples"
   ],
   "scripts": {
     "build": "tsc",

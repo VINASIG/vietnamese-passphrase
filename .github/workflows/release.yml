@@ -1,0 +1,83 @@
+name: Reproducible release
+
+on:
+  push:
+    tags: ["v0.2.*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: "3.12.14"
+          - os: windows-latest
+            python: "3.14.8"
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+      - run: npm install --global npm@12.2.0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: npm ci --ignore-scripts
+      - run: python -m pip install --require-hashes -r requirements-dev.txt
+      - run: npm run verify
+      - run: python tests/data_test.py
+      - run: python tests/vocabulary_test.py
+      - run: python -m mypy scripts tests/data_test.py tests/vocabulary_test.py examples
+      - run: python -m ruff check scripts tests/data_test.py tests/vocabulary_test.py examples
+      - run: python -m ruff format --check scripts tests/data_test.py tests/vocabulary_test.py examples
+      - run: python scripts/research.py
+      - run: python scripts/vocabulary_audit.py
+      - run: python scripts/experiment_profiles.py
+      - run: python scripts/compare_methodology.py
+      - run: git diff --exit-code -- data docs/research research/experimental
+      - run: python scripts/package_release.py --out output/release
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ matrix.os }}
+          path: |
+            output/release/*.tgz
+            output/release/*.tar.gz
+            output/release/SHA256SUMS.txt
+            output/release/build-record.json
+          if-no-files-found: error
+          retention-days: 30
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          path: builds
+      - run: python scripts/package_release.py --compare builds/ubuntu-latest builds/windows-latest
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: "builds/ubuntu-latest/*"
+      - name: Publish verified prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "$GITHUB_REF_NAME" --verify-tag --prerelease
+          --notes-file docs/releases/v0.2.0.md
+          builds/ubuntu-latest/*.tgz builds/ubuntu-latest/*.tar.gz
+          builds/ubuntu-latest/SHA256SUMS.txt builds/ubuntu-latest/build-record.json

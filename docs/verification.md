@@ -1,6 +1,6 @@
-# Verification record
+# Historical v0.1.0 verification record
 
-Local verification date 6 October 2026. These observations cover the inspected source and data in this checkout. Remote publication evidence is separate.
+This record describes the v0.1.0 delivery and its publication follow-up, not later source changes. Local verification date 6 October 2026. These observations cover the inspected source and data in this checkout. Remote publication evidence is separate.
 
 | Check                                      | Status         | Observed evidence                                                                                                                                                                       |
 | ------------------------------------------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

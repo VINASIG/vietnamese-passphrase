@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "version": "2026-10-06.agent-1",
+  "actor": "Codex SI agent; no human panel or independent linguistic approval",
+  "scope": "Headword-level screening of all 3057 baseline tokens, not an exhaustive review of every dictionary sense or generated combination",
+  "purpose": "An experimental general-display vocabulary that avoids conspicuous adult, violent, criminal, derogatory and severe-trauma headwords",
+  "default": "no-headword-flag; eligible for experiment, not certified harmless",
+  "retained": "Ordinary negative emotions, neutral medical and anatomical terms, identity, gender, religion, nationality and political affiliation are not inherently offensive and are not automatic exclusions. Phrase combinations and slang may remain sensitive.",
+  "categories": {
+    "adult-sexual": {"reason":"Conspicuous adult sexual meaning or ambiguous standalone sexual morpheme in an unattended general-display setting", "tokens": ["dâm","dục","làm_tình","tình_dục","xuất_tinh"]},
+    "violence-coercion": {"reason":"Headword directly evokes violence, coercion, weapons or violent conflict", "tokens": ["bạo_lực","bắt_cóc","chiến_đấu","cưỡng","giặc","giết","giết_người","hủy_diệt","khủng_bố","quân_đội","roi","sát_hại","tên_lửa","trói","trả_thù","trừng_phạt","tàn_nhẫn","tàn_phá","tấn_công","tử_hình","vũ_khí","đe_dọa","đánh_nhau","đâm","đòn","đấm"]},
+    "crime-abuse": {"reason":"Direct criminal, abusive or deceptive action; context preference rather than a moral judgement on all senses", "tokens": ["cướp","gian_lận","giang_hồ","lạm_dụng","lừa_đảo","móc_túi","nô_lệ","phạm_pháp","rửa_tiền","tội_phạm","xâm_phạm","ăn_cắp","ăn_trộm","đánh_lừa","đột_nhập"]},
+    "death-severe-trauma": {"reason":"Conspicuous death, self-harm, severe injury, disaster or severe disease headword", "tokens": ["chôn_cất","chảy_máu","chết","chết_đuối","khủng_hoảng","qua_đời","tai_nạn","thiệt_mạng","thảm_họa","tuyệt_vọng","tổn_thương","tử_vong","tự_sát","tự_tử","ung_thư","vết_thương","đại_dịch","động_đất"]},
+    "substances": {"reason":"Alcohol, tobacco or illicit-drug reference unsuitable for some school or family display contexts", "tokens": ["bia","hút_thuốc","ma_túy","rượu","rượu_nho","rượu_vang","say_rượu","thuốc_lá","xì_gà"]},
+    "derogatory-body-function": {"reason":"Headword commonly used as an insult, humiliation, blunt bodily function or sensitive relationship accusation", "tokens": ["chửi","cắm_sừng","ngoại_tình","ngu","ngu_ngốc","nhục","phát_điên","phản_bội","xúc_phạm","đái","điên"]}
+  },
+  "variantFamilies": [
+    {"members":["bác_sĩ","bác_sỹ"],"representative":"bác_sĩ","reason":"Agent chooses one display spelling for the occupation; both remain in the historical vocabulary."},
+    {"members":["công_ti","công_ty"],"representative":"công_ty","reason":"Agent chooses one display spelling for company; no claim of universal i/y reform."},
+    {"members":["kĩ_năng","kỹ_năng"],"representative":"kỹ_năng","reason":"Agent chooses one display spelling for skill."},
+    {"members":["kỉ_niệm","kỷ_niệm"],"representative":"kỷ_niệm","reason":"Agent chooses one display spelling for commemoration or memory."},
+    {"members":["lí_do","lý_do"],"representative":"lý_do","reason":"Agent chooses one display spelling for reason."},
+    {"members":["gởi","gửi"],"representative":"gửi","reason":"Agent consolidates this sending variant for display consistency without rejecting regional legitimacy."},
+    {"members":["cám_ơn","cảm_ơn"],"representative":"cảm_ơn","reason":"Agent consolidates the conventional thanking expressions for this profile only."}
+  ],
+  "nonAliases": ["tai/tay", "dài/dày", "bài/bày", "thai/thay", "vai/vay", "gai/gay", "chải/chảy", "dại/dạy"],
+  "limitations": ["Single agent assessment with possible omissions and bias", "No measured human response or regional familiarity", "No guaranteed safety of randomly combined words", "No blanket i/y, regional-pronunciation or accent-based semantic merging", "All disputed decisions can be changed only in a new experimental revision"]
+}

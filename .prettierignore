@@ -5,6 +5,9 @@ dist/
 .vinasig/
 .agents/
 docs/research/*.json
+docs/research/adversarial/
+research/inputs/
+research/experimental/
 docs/third-party/
 docs/license-text-sources.json
 licenses/

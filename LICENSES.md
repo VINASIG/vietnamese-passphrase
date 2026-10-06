@@ -26,3 +26,5 @@ EFF, Orchard Street, Ho Ngoc Duc / duyet and osem23 / TZUR are separate benchmar
 Original executable examples embedded in documentation use LGPL-3.0-or-later, separately from the surrounding CC-BY-SA-4.0 prose. User-selected secrets are outputs and do not inherit these licenses by being processed. Future contributions use the license of their destination scope. No blanket copyright transfer is required.
 
 For redistribution, carry the selected data, corresponding source evidence, NOTICE.md, the applicable full texts and this scope map. The complete source, lockfiles, build instructions and standards manifest are supplied in the repository. Package and dataset integrity checks cover the actual distribution, not only the root LICENSE filename.
+
+`research/inputs/ud-vtb/` preserves original CC-BY-SA-4.0 corpus bytes, license and attribution. Original diagnostic data, content decisions and experimental lists in `research/` use CC-BY-SA-4.0 with inherited credits. Their executable build code in `scripts/` uses LGPL-3.0-or-later. See the concrete [downstream redistribution guide](docs/downstream.md).

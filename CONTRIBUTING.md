@@ -2,7 +2,7 @@
 
 Contributions should improve inspectable evidence, implementation correctness or measured usability. Open an issue or pull request with a reproducible example. Do not submit real passwords or private user data.
 
-For a lexical correction, give the original word, affected profile, dictionary or corpus evidence, intended spelling, dialect context and relevant senses. Check `data/provenance.jsonl` and `data/audit/decisions.jsonl` first. Explain whether a proposed word is independently usable, a bound morpheme, an abbreviation, a proper name or a spelling variant. Human review must name the actual reviewer and scope. An SI agent's automated review must not be relabelled as native-speaker approval.
+For a lexical correction, give the original word, affected profile, dictionary or corpus evidence, intended spelling, dialect context and relevant senses. Check `data/provenance.jsonl` and `data/audit/decisions.jsonl` first. Explain whether a proposed word is independently usable, a bound morpheme, an abbreviation, a proper name or a spelling variant. Project execution and assessment are by SI agents. Record assessment scope, rationale and uncertainty. Incoming external comments do not become a completed review without verified scope. Agent assessment must not be relabelled as native-speaker approval.
 
 Do not edit generated lists directly. Propose a rule or an attributable evidence change, regenerate data and provide a before/after report. Published data revisions are immutable. Any changed vocabulary requires a new version and digests. The list size is an outcome of rules, not a quota to fill with marginal words.
 

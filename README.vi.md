@@ -4,19 +4,35 @@ Bộ wordlist tiếng Việt có nguồn gốc từng mục, quy trình xây d�
 
 [English](README.md) · [Nghiên cứu và so sánh](docs/research.md) · [Mô hình bảo mật](docs/security.md)
 
-Phiên bản 0.1.0 là **bản nghiên cứu thử nghiệm**. Kiểm tra cấu trúc và các phép thử chương trình đã được xây dựng. Dự án chưa có thẩm định ngôn ngữ độc lập, nghiên cứu khả năng ghi nhớ với người dùng Việt hay kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39.
+Phiên bản 0.2.0 là **bản nghiên cứu thử nghiệm do SI agents đánh giá**. Theo quy tắc của chủ dự án, công việc và đánh giá do agents thực hiện. Quyết định của agent không thay thế bằng chứng từ người dùng. Kiểm tra cấu trúc và các phép thử chương trình đã được xây dựng. Dự án chưa có thẩm định ngôn ngữ độc lập, nghiên cứu khả năng ghi nhớ với người dùng Việt hay kiểm toán bảo mật độc lập. Không dùng các danh sách này làm định dạng khôi phục ví BIP-39.
 
 [Bản phát hành v0.1.0](https://github.com/VINASIG/vietnamese-passphrase/releases/tag/v0.1.0) có gói tích hợp, các bản chụp nguồn dữ liệu gốc và checksum SHA-256. [Hồ sơ phát hành](docs/publication-plan.json) ghi revision mã nguồn, kết quả kiểm tra file tải lại và thông tin công khai trên các trang liên quan.
 
 | Danh sách                           | Số mục | Bit mỗi lượt lấy mẫu đều | Số lượt để đạt ít nhất 80 bit | Độ dài trung bình có dấu nối |
 | ----------------------------------- | -----: | -----------------------: | ----------------------------: | ---------------------------: |
-| [vi](data/lists/vi.txt)             |  3.057 |                  11,5779 |                             7 |              48,29 codepoint |
-| [vi-ascii](data/lists/vi-ascii.txt) |  2.464 |                  11,2668 |                             8 |              60,44 codepoint |
-| [vi-short](data/lists/vi-short.txt) |  1.293 |                  10,3365 |                             8 |              34,75 codepoint |
+| [vi](data/lists/vi.txt)             |  3.057 |                     11,6 |                             7 |               48,3 codepoint |
+| [vi-ascii](data/lists/vi-ascii.txt) |  2.464 |                     11,3 |                             8 |               60,4 codepoint |
+| [vi-short](data/lists/vi-short.txt) |  1.293 |                     10,3 |                             8 |               34,7 codepoint |
 
 Kích thước xuất phát từ các tiêu chí nguồn dữ liệu và lọc từ. `vi` giữ dấu tiếng Việt và chứa từ một hoặc hai tiếng. `vi-ascii` gộp những từ trùng nhau khi bỏ dấu trước khi lấy mẫu. `vi-short` là lựa chọn từ một tiếng để so sánh độ dài. Danh sách ngắn hơn chưa được chứng minh là dễ nhớ hơn. Mục tiêu 80 bit ở bảng là một ví dụ để so sánh, cần chọn mục tiêu phù hợp với hệ thống thực tế.
 
 Từ ghép `bánh mì` được biểu diễn bằng `bánh_mì`. Giữa các mục dùng dấu khác, chẳng hạn `-`. Phải giữ ranh giới này. Không bỏ dấu sau khi sinh, không tự chọn từ yêu thích, không đổi thứ tự và không cắt câu mật khẩu cho vừa ô nhập.
+
+## Các profile thử nghiệm riêng
+
+Ba danh sách v0.1 ở trên được giữ nguyên từng byte làm mốc đối chiếu. Kích thước 3.057 là kết quả heuristic, chưa được chứng minh tối ưu. [Báo cáo phản biện và phương pháp mới](docs/adversarial-review.md) tách đo cấu trúc, chứng cứ corpus, quyết định của agent và những điều chưa biết về người dùng.
+
+| Profile            | Số mục | Mục đích và đánh đổi                                                                                                              |
+| ------------------ | -----: | --------------------------------------------------------------------------------------------------------------------------------- |
+| `vi-display`       |  2.966 | Sàng lọc ngữ cảnh ở mức đầu mục; loại 84 mục có lý do và gộp bảy cặp biến thể. Không bảo đảm mọi nghĩa hoặc tổ hợp từ đều phù hợp |
+| `vi-fused`         |  2.966 | Viết liền từ ghép trước khi lấy mẫu, tiết kiệm ký tự nhưng không hiện ranh giới tiếng                                             |
+| `vi-ascii-display` |  2.389 | Lấy mẫu đều các chuỗi bỏ dấu duy nhất; mất phân biệt nghĩa vẫn tồn tại                                                            |
+| `vi-ascii-native`  |  2.389 | Cặp đối chứng Unicode dùng cùng chỉ mục với profile ASCII                                                                         |
+| `vi-distinct`      |  2.045 | Tập con không có cặp cách một codepoint NFC; câu dài hơn và còn các dạng gần nhau khác                                            |
+
+[Phiên bản thử nghiệm riêng](research/experimental/2026-10-06.agent-1/) có manifest, checksum, sổ quyết định và toàn bộ cặp tương tự. Không profile nào được chọn làm mặc định chung. Khoảng 43,4% token bản gốc có hàng xóm cách một ký tự; ở bản ngắn là 96,0%. Đây không phải tỷ lệ người dùng gõ sai. Corpus tin tức VTB đối chiếu được 60,4% token bản gốc; đó không phải điểm quen thuộc.
+
+CLI v0.2 bắt buộc chọn `--profile`. Lệnh kiểm tra chỉ báo `INTEGRITY_PASS` cho byte và định dạng. [Phạm vi bảo đảm](docs/assurance.md), [hướng dẫn phân phối lại](docs/downstream.md) và [xác minh nguồn bản phát hành](docs/release-security.md) nêu rõ từng lớp chứng cứ. Dự án chưa tuyên bố chuẩn passphrase tiếng Việt, khả năng ghi nhớ vượt trội hoặc thẩm định độc lập đã hoàn tất.
 
 ## Dùng thử
 
